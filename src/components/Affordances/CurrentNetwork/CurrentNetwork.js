@@ -1,10 +1,10 @@
-import style from './CurrentNetwork.module.css';
+import '../../../styles/components/_selected-network.scss';
 
 const DropdownMenuNetwork = () => {
 
   return (
-    <div  className={style['selected-network-wrapper']}>
-      <div className={style['selected-network']}>Ethereum Ropsten</div>
+    <div className='selectedNetworkWrapper'>
+      <div className='selectedNetwork'>Ethereum Ropsten</div>
     </div>
   )
 }

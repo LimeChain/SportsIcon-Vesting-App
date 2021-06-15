@@ -1,11 +1,11 @@
-import style from './Header.module.css';
+import '../../styles/Header.scss';
 import CurrentNetwork from '../Affordances/CurrentNetwork/CurrentNetwork';
 import ConnectWallet from '../Affordances/ConnectWallet/ConnectWallet';
 
 const Header = () => { 
 
     return (
-        <header className={style["main-header"]}>
+        <header className="mainHeader">
             <CurrentNetwork></CurrentNetwork>
             <ConnectWallet></ConnectWallet>
         </header>
