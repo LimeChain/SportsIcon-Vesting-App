@@ -1,4 +1,4 @@
-import style from '../../Component.module.css';
+import style from './ConnectWallet.module.css';
 import { useGlobalContext } from "../../../context/GlobalContext"
 
 const ConnectWallet = () => {
