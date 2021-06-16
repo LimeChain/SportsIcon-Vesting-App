@@ -50,7 +50,7 @@ const ConnectWallet = () => {
     }, []);
 
     const checkSupportedNetwork = (chosenNetwork) => {
-        return chosenNetwork === window.currentNetwork?.chain_id ? true : false;
+        return chosenNetwork === window.CONFIG?.chain_id ? true : false;
     }
 
     const onConnect = async () => {
@@ -58,26 +58,25 @@ const ConnectWallet = () => {
         try {
             const providerOptions = {
                 walletconnect: {
-                    package: WalletConnectProvider, // required
+                    package: WalletConnectProvider, 
                     options: {
-                        infuraId: "5c157617f6b449c3b355b5f7970722c1" // required
+                        infuraId: process.env.REACT_APP_CONFIG
                     }
                 }
             };
             const web3Modal = new Web3Modal({
                 cacheProvider: true,
-                network: window.currentNetwork.network,
+                network: window.CONFIG.network,
                 providerOptions
             });
             const instance = await web3Modal.connect();
-            console.log(instance)
             const provider = await new ethers.providers.Web3Provider(instance);
             await setInstance(instance);
             await setProvider(provider);
             const network = await provider.getNetwork();
 
             if (!checkSupportedNetwork(network.chainId)) {
-                alert(`Please change network to currently supported one: ${window.currentNetwork.network}`);
+                alert(`Please change network to currently supported one: ${window.CONFIG.network}`);
                 setConnectionState(false);
                 return;
             }
@@ -125,9 +124,9 @@ const ConnectWallet = () => {
         const userWallet = await providerRef.current.getSigner();
         const userWalletAddress = await userWallet.getAddress();
         const network = await provider.getNetwork();
-        if (window.currentNetwork?.chain_id !== parseInt(networkId)) {
+        if (window.CONFIG?.chain_id !== parseInt(networkId)) {
             if (!checkSupportedNetwork(network.chainId)) {
-                alert(`Please change network to currently supported one: ${window.currentNetwork.network}`);
+                alert(`Please change network to currently supported one: ${window.CONFIG.network}`);
             }
             onDisconnect();
             setConnectionState(false)
