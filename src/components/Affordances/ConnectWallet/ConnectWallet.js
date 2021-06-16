@@ -4,6 +4,7 @@ import { useGlobalContext } from "../../../context/GlobalContext";
 import Web3Modal from 'web3modal';
 import { ethers } from 'ethers';
 import { formatAddress } from '../../../helpers/StringRenderOperations';
+import WalletConnectProvider from "@walletconnect/web3-provider";
 
 const ConnectWallet = () => {
     const {
@@ -43,7 +44,6 @@ const ConnectWallet = () => {
     useEffect(() => {
         const getData = async () => {
             const isConnected = localStorage.getItem("connection-status");
-            console.log(isConnected)
             if (isConnected) await onConnect()
         }
         getData()
@@ -55,32 +55,49 @@ const ConnectWallet = () => {
 
     const onConnect = async () => {
         setConnectionState(true)
-        const web3Modal = new Web3Modal({
-            cacheProvider: true,
-            network: window.currentNetwork.network
-        });
-        const instance = await web3Modal.connect();
-        const provider = await new ethers.providers.Web3Provider(instance);
-        await setInstance(instance);
-        await setProvider(provider);
-        const network = await provider.getNetwork();
+        try {
+            const providerOptions = {
+                walletconnect: {
+                    package: WalletConnectProvider, // required
+                    options: {
+                        infuraId: "5c157617f6b449c3b355b5f7970722c1" // required
+                    }
+                }
+            };
+            const web3Modal = new Web3Modal({
+                cacheProvider: true,
+                network: window.currentNetwork.network,
+                providerOptions
+            });
+            const instance = await web3Modal.connect();
+            console.log(instance)
+            const provider = await new ethers.providers.Web3Provider(instance);
+            await setInstance(instance);
+            await setProvider(provider);
+            const network = await provider.getNetwork();
 
-        if (!checkSupportedNetwork(network.chainId)) {
-            alert(`Please change network to currently supported one: ${window.currentNetwork.network}`);
-            setConnectionState(false);
-            return;
+            if (!checkSupportedNetwork(network.chainId)) {
+                alert(`Please change network to currently supported one: ${window.currentNetwork.network}`);
+                setConnectionState(false);
+                return;
+            }
+
+            const userWalletAddress = instance.selectedAddress ? instance.selectedAddress : instance?.accounts[0];
+            const userWallet = await provider.getSigner();
+
+            localStorage.setItem("connection-status", true);
+
+            await setNetwork(network.name);
+            await setUserWallet(userWallet);
+            await setUserWalletAddress(userWalletAddress);
+            await subscribeToProviderEvents(instance);
+            await setConnectionState(false);
+
+        } catch (e) {
+            await setConnectionState(false);
+            console.log(e)
         }
 
-        const userWalletAddress = instance.selectedAddress ? instance.selectedAddress : instance?.accounts[0];
-        const userWallet = await provider.getSigner();
-
-        localStorage.setItem("connection-status", true);
-
-        await setNetwork(network.name);
-        await setUserWallet(userWallet);
-        await setUserWalletAddress(userWalletAddress);
-        await subscribeToProviderEvents(instance);
-        await setConnectionState(false);
     }
 
     // Listen to the event, which originate from MetaMask wallet
