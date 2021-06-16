@@ -1,12 +1,18 @@
 import '../../../styles/components/_selected-network.scss';
+import { useGlobalContext } from '../../../context/GlobalContext';
+import { formatNetworkName } from '../../../helpers/StringRenderOperations';
 
-const DropdownMenuNetwork = () => {
-
+const CurrentNetwork = () => {
+  const { userWallet, network } = useGlobalContext();
   return (
-    <div className='selectedNetworkWrapper'>
-      <div className='selectedNetwork'>Ethereum Ropsten</div>
+    <div className={style['selected-network-wrapper']}>
+      { !userWallet ?
+        'Network'
+        :
+        <div className={style['selected-network']}>Ethereum {formatNetworkName(network)}</div>}
     </div>
   )
 }
 
-export default DropdownMenuNetwork
+export default CurrentNetwork;
+

@@ -1,13 +1,13 @@
-import './App.css';
+import {Fragment} from 'react';
 import Header from './components/Header/Header';
 import { GlobalProvider } from "./context/GlobalContext"
 
 function App() {
   return (
     <GlobalProvider>
-      <div className="App">
+      <Fragment>
         <Header></Header>
-      </div>
+      </Fragment>
     </GlobalProvider>
   );
 }
