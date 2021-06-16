@@ -1,4 +1,4 @@
-import style from './CurrentNetwork.module.css';
+import '../../../styles/components/_selected-network.scss';
 import { useGlobalContext } from '../../../context/GlobalContext';
 import { formatNetworkName } from '../../../helpers/StringRenderOperations';
 
@@ -15,3 +15,4 @@ const CurrentNetwork = () => {
 }
 
 export default CurrentNetwork;
+

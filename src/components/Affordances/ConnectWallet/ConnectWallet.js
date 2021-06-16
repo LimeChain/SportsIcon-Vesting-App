@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import style from './ConnectWallet.module.css';
+import '../../../styles/components/_button.scss';
 import { useGlobalContext } from "../../../context/GlobalContext";
 import Web3Modal from 'web3modal';
 import { ethers } from 'ethers';
@@ -151,17 +151,19 @@ const ConnectWallet = () => {
     }
 
     return (
-        <div className={style['button-wrapper']}>
+        <div className='buttonWrapper'>
             {userWallet ?
-                <button disabled={!isMetaMask} className={style.button}>{formatAddress(userWalletAddress)}</button>
+                <button disabled={!isMetaMask}>{formatAddress(userWalletAddress)}</button>
                 :
                 connectionState ?
-                    <button disabled={!isMetaMask} className={style.button}>Connecting...</button>
+                    <button disabled={!isMetaMask}>Connecting...</button>
                     :
-                    <button disabled={!isMetaMask} onClick={onConnect} className={style.button}>Connect</button>
+                    <button disabled={!isMetaMask} onClick={onConnect}>Connect</button>
             }
         </div>
     )
 }
 
+
 export default ConnectWallet;
+
