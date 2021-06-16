@@ -1,0 +1,17 @@
+@import '../../styles/config/colors.scss';
+
+.selectedNetworkWrapper{
+    flex:1;
+    margin: 1% 25%;
+    .selectedNetwork {
+        border-radius: 8px;
+        width: 200px;
+        text-align: center;
+        padding: 15px;
+        font-size: 16px;
+        border: $border-selected-network-box;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+    }
+}
+  
