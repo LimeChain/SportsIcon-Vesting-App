@@ -58,7 +58,7 @@ const ConnectWallet = () => {
         try {
             const providerOptions = {
                 walletconnect: {
-                    package: WalletConnectProvider, 
+                    package: WalletConnectProvider,
                     options: {
                         infuraId: process.env.REACT_APP_CONFIG
                     }
@@ -117,6 +117,14 @@ const ConnectWallet = () => {
         await setUserWalletAddress(userWalletAddress);
     }
 
+    const networkOperations = (networkToBeChecked) => {
+        if (!checkSupportedNetwork(networkToBeChecked.chainId)) {
+            alert(`Please change network to currently supported one: ${window.CONFIG.network}`);
+        }
+        onDisconnect();
+        setConnectionState(false);
+        return;
+    }
 
     // Change Network Callback
     const onChangeChain = async (networkId) => {
@@ -125,11 +133,7 @@ const ConnectWallet = () => {
         const userWalletAddress = await userWallet.getAddress();
         const network = await provider.getNetwork();
         if (window.CONFIG?.chain_id !== parseInt(networkId)) {
-            if (!checkSupportedNetwork(network.chainId)) {
-                alert(`Please change network to currently supported one: ${window.CONFIG.network}`);
-            }
-            onDisconnect();
-            setConnectionState(false)
+            networkOperations(network);
             return;
         }
         // const sdk = await new RouterSDK();
