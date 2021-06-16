@@ -5,11 +5,11 @@ import { formatNetworkName } from '../../../helpers/StringRenderOperations';
 const CurrentNetwork = () => {
   const { userWallet, network } = useGlobalContext();
   return (
-    <div className={style['selected-network-wrapper']}>
+    <div className='selectedNetworkWrapper'>
       { !userWallet ?
         'Network'
         :
-        <div className={style['selected-network']}>Ethereum {formatNetworkName(network)}</div>}
+        <div className='selectedNetwork'>Ethereum {formatNetworkName(network)}</div>}
     </div>
   )
 }
