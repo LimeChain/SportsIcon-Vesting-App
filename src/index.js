@@ -3,18 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-// import testnet from './configs/testnet';
+import config from './config/config';
 
-const testPurposeFakeNetwork = {
-  "symbol": "ETH",
-  "name": "Ethereum Ropsten",
-  "network": "ropsten",
-  "chain_id": 3,
-  "network_id": 3,
-  "rpc_url": `https://ropsten.infura.io/v3/${process.env.REACT_APP_INFURA_ID}`,
-};
-
-window.currentNetwork = testPurposeFakeNetwork;
+window.CONFIG = process.env.REACT_APP_CONFIG === "testnet" ?  config.testnet : config.mainnet;
 
 ReactDOM.render(
   <React.StrictMode>
