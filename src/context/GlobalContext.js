@@ -18,6 +18,7 @@ const UpdateGlobalContext = createContext();
 
 export function GlobalProvider({ children }) {
     const [isMetaMask, setMetaMask] = useState(initialState.isMetaMask);
+    const [balanceTokSportsIconTokens, setBalanceTokSportsIconTokens] = useState(initialState.balanceSportsIconTokens);
     const [network, setNetwork] = useState(initialState.network);
     const [userWallet, setUserWallet] = useState(initialState.userWallet);
     const [userWalletAddress, setUserWalletAddress] = useState(initialState.userWalletAddress);
@@ -39,7 +40,8 @@ export function GlobalProvider({ children }) {
             freeTokens,
             connectionState,
             isMetaMask,
-            network
+            network,
+            balanceTokSportsIconTokens, 
         }}>
             <UpdateGlobalContext.Provider value={{
                 setUserWallet,
@@ -51,7 +53,8 @@ export function GlobalProvider({ children }) {
                 setFreeTokens,
                 setConnectionState,
                 setMetaMask,
-                setNetwork
+                setNetwork,
+                setBalanceTokSportsIconTokens
             }}>
                 {children}
             </UpdateGlobalContext.Provider>

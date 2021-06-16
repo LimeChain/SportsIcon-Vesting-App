@@ -5,6 +5,9 @@ import Web3Modal from 'web3modal';
 import { ethers } from 'ethers';
 import { formatAddress } from '../../../helpers/StringRenderOperations';
 import WalletConnectProvider from "@walletconnect/web3-provider";
+import RouterSDK from '../../../sdk/sdk';
+import routerContract from '../../../abis/ISportsIconPrivateVesting.json';
+import ERC20 from '../../../abis/SportsIcon.json';
 
 const ConnectWallet = () => {
     const {
@@ -13,7 +16,10 @@ const ConnectWallet = () => {
         userWalletAddress, setUserWalletAddress,
         setSDK,
         connectionState, setConnectionState,
-        isMetaMask, setMetaMask
+        isMetaMask, setMetaMask,
+        setBalanceTokSportsIconTokens,
+        setVestedTokens,
+        setFreeTokens,
     } = useGlobalContext();
 
     const [provider, _setProvider] = useState('');
@@ -50,7 +56,18 @@ const ConnectWallet = () => {
     }, []);
 
     const checkSupportedNetwork = (chosenNetwork) => {
-        return chosenNetwork === window.CONFIG?.chain_id ? true : false;
+        return chosenNetwork === window.CONFIG?.network.chain_id ? true : false;
+    }
+
+    const updateGlobalStateQuantities = async (userWallet, userWalletAddress) => {
+        const sdk = await new RouterSDK(userWallet, window.CONFIG.contract, routerContract.abi, ERC20.abi);
+        const balance = await sdk.balanceOfSportsIconTokens(window.CONFIG.token, userWalletAddress);
+        const vestedTokens = await sdk.getUserTotalVestedAmount(userWalletAddress);
+        const freeTokens = await sdk.getUserFreeTokens(userWalletAddress);
+        await setSDK(sdk);
+        await setBalanceTokSportsIconTokens(balance);
+        await setVestedTokens(vestedTokens);
+        await setFreeTokens(freeTokens);
     }
 
     const onConnect = async () => {
@@ -60,15 +77,17 @@ const ConnectWallet = () => {
                 walletconnect: {
                     package: WalletConnectProvider,
                     options: {
-                        infuraId: process.env.REACT_APP_CONFIG
+                        infuraId: process.env.REACT_APP_INFURA_ID
                     }
                 }
             };
+
             const web3Modal = new Web3Modal({
                 cacheProvider: true,
-                network: window.CONFIG.network,
+                network: window.CONFIG.network.network,
                 providerOptions
             });
+
             const instance = await web3Modal.connect();
             const provider = await new ethers.providers.Web3Provider(instance);
             await setInstance(instance);
@@ -76,14 +95,14 @@ const ConnectWallet = () => {
             const network = await provider.getNetwork();
 
             if (!checkSupportedNetwork(network.chainId)) {
-                alert(`Please change network to currently supported one: ${window.CONFIG.network}`);
+                alert(`Please change network to currently supported one: ${window.CONFIG.network.network}`);
                 setConnectionState(false);
                 return;
             }
 
             const userWalletAddress = instance.selectedAddress ? instance.selectedAddress : instance?.accounts[0];
             const userWallet = await provider.getSigner();
-
+            
             localStorage.setItem("connection-status", true);
 
             await setNetwork(network.name);
@@ -91,12 +110,11 @@ const ConnectWallet = () => {
             await setUserWalletAddress(userWalletAddress);
             await subscribeToProviderEvents(instance);
             await setConnectionState(false);
+            await updateGlobalStateQuantities(userWallet, userWalletAddress);
 
         } catch (e) {
             await setConnectionState(false);
-            console.log(e)
         }
-
     }
 
     // Listen to the event, which originate from MetaMask wallet
@@ -105,21 +123,20 @@ const ConnectWallet = () => {
         instance.on("chainChanged", onChangeChain);
     }
 
-
     // Change Account Callback
     const onChangeAccount = async (accounts) => {
         if (!accounts.length) return
-        console.log(accounts.length)
         const userWallet = await providerRef.current.getSigner();
         const userWalletAddress = await userWallet.getAddress();
-        // const sdk = await new RouterSDK(userWallet, window.CONFIG[symbol].contracts.router, routerContract.abi, ERC20Permit.abi, window.CONFIG[symbol].validators.london, thresholdBN);
-        await setUserWallet(userWallet)
+       
+        await setUserWallet(userWallet);
         await setUserWalletAddress(userWalletAddress);
+        await updateGlobalStateQuantities(userWallet, userWalletAddress);
     }
 
     const networkOperations = (networkToBeChecked) => {
         if (!checkSupportedNetwork(networkToBeChecked.chainId)) {
-            alert(`Please change network to currently supported one: ${window.CONFIG.network}`);
+            alert(`Please change network to currently supported one: ${window.CONFIG.network.network}`);
         }
         onDisconnect();
         setConnectionState(false);
@@ -136,11 +153,10 @@ const ConnectWallet = () => {
             networkOperations(network);
             return;
         }
-        // const sdk = await new RouterSDK();
         await setProvider(provider);
         await setUserWallet(userWallet);
         await setUserWalletAddress(userWalletAddress);
-        // await setSDK(sdk);
+        await updateGlobalStateQuantities(userWallet, userWalletAddress);
     }
 
     // On disconnect

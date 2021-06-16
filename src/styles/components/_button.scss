@@ -1,8 +1,9 @@
 @import '../../styles/config/colors.scss';
 
 .buttonWrapper{
+    text-align: center;
     flex: 1;
-    margin: 1% 25%;
+    margin: 1%;
     button{
         width: 250px;
         padding: 15px;
