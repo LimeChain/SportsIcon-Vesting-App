@@ -3,13 +3,13 @@ import CurrentNetwork from '../Affordances/CurrentNetwork/CurrentNetwork';
 import ConnectWallet from '../Affordances/ConnectWallet/ConnectWallet';
 import TokenBalancePresentation from '../../views/TokenBalancePresentation/TokenBalancePresentation';
 
-const Header = () => { 
+const Header = () => {
 
     return (
         <header className="mainHeader">
-            <CurrentNetwork></CurrentNetwork>
-            <TokenBalancePresentation></TokenBalancePresentation>
-            <ConnectWallet></ConnectWallet>
+            <CurrentNetwork />
+            <TokenBalancePresentation />
+            <ConnectWallet />
         </header>
     )
 }

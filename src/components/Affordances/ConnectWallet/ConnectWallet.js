@@ -100,9 +100,9 @@ const ConnectWallet = () => {
                 return;
             }
 
-            const userWalletAddress = instance.selectedAddress ? instance.selectedAddress : instance?.accounts[0];
             const userWallet = await provider.getSigner();
-            
+            const userWalletAddress = await userWallet.getAddress();
+          
             localStorage.setItem("connection-status", true);
 
             await setNetwork(network.name);
@@ -128,7 +128,7 @@ const ConnectWallet = () => {
         if (!accounts.length) return
         const userWallet = await providerRef.current.getSigner();
         const userWalletAddress = await userWallet.getAddress();
-       
+
         await setUserWallet(userWallet);
         await setUserWalletAddress(userWalletAddress);
         await updateGlobalStateQuantities(userWallet, userWalletAddress);
@@ -177,7 +177,7 @@ const ConnectWallet = () => {
                 connectionState ?
                     <button className='buttonConnectivity' disabled={!isMetaMask}>Connecting...</button>
                     :
-                    <button  disabled={!isMetaMask} onClick={onConnect}>Connect</button>
+                    <button disabled={!isMetaMask} onClick={onConnect}>Connect</button>
             }
         </div>
     )

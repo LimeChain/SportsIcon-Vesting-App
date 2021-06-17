@@ -5,6 +5,10 @@ import Balance from './Balance/Balance';
 const ClaimForm = () => {
     const { sdk, freeTokens, setFreeTokens, setBalanceTokSportsIconTokens, transactionMining, setTransactionMining, isMetaMask, userWallet, userWalletAddress } = useGlobalContext();
 
+    const CLAIM_STATUSES = {
+        success: 1
+    }
+
     const balanceOperations = async () => {
         const balance = await sdk.balanceOfSportsIconTokens(window.CONFIG.token, userWalletAddress);
         const freeTokens = await sdk.getUserFreeTokens(userWalletAddress);
@@ -17,7 +21,7 @@ const ClaimForm = () => {
         try {
             await setTransactionMining(true);
             const tokensClaimedStatus = await sdk.claimFreeTokens();
-            if (tokensClaimedStatus === 1) {
+            if (tokensClaimedStatus === CLAIM_STATUSES.success) {
                 balanceOperations()
             } else {
                 throw new Error('transaction failed');
