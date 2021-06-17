@@ -1,4 +1,4 @@
-import '../../styles/components/_token-balance.scss';
+import '../../styles/components/_inherit.scss';
 import { useGlobalContext } from '../../context/GlobalContext';
 
 const TokenBalancePresentation = () => {

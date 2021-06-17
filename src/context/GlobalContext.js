@@ -11,6 +11,7 @@ const initialState = {
     balanceSportsIconTokens: 0,
     vestedTokens: 0,
     freeTokens: 0,
+    transactionMining: false,
 }
 
 const GlobalContext = createContext(initialState);
@@ -28,7 +29,7 @@ export function GlobalProvider({ children }) {
     const [vestedTokens, setVestedTokens] = useState(initialState.vestedTokens);
     const [freeTokens, setFreeTokens] = useState(initialState.freeTokens);
     const [connectionState, setConnectionState] = useState(initialState.connectionState);
-
+    const [transactionMining, setTransactionMining] = useState(initialState.transactionMining);
     return (
         <GlobalContext.Provider value={{
             userWallet,
@@ -41,7 +42,8 @@ export function GlobalProvider({ children }) {
             connectionState,
             isMetaMask,
             network,
-            balanceTokSportsIconTokens, 
+            balanceTokSportsIconTokens,
+            transactionMining
         }}>
             <UpdateGlobalContext.Provider value={{
                 setUserWallet,
@@ -54,7 +56,8 @@ export function GlobalProvider({ children }) {
                 setConnectionState,
                 setMetaMask,
                 setNetwork,
-                setBalanceTokSportsIconTokens
+                setBalanceTokSportsIconTokens,
+                setTransactionMining
             }}>
                 {children}
             </UpdateGlobalContext.Provider>

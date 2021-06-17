@@ -2,14 +2,13 @@
 
 @mixin theme($theme: DarkGray) {
     background: $theme;
-    text-align: center;
     padding: 15px;
     font-size: 16px;
 }
 .tokenBalanceWrapper{
-    text-align: center;
     display: flex;
     flex-direction: row;
+    justify-content: center;
     flex: 1;
     margin: 1%;
     border-radius: 15px;

@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import '../../../styles/components/_button.scss';
+import '../../../styles/components/_inherit.scss';
 import { useGlobalContext } from "../../../context/GlobalContext";
 import Web3Modal from 'web3modal';
 import { ethers } from 'ethers';
@@ -62,11 +62,11 @@ const ConnectWallet = () => {
     const updateGlobalStateQuantities = async (userWallet, userWalletAddress) => {
         const sdk = await new RouterSDK(userWallet, window.CONFIG.contract, routerContract.abi, ERC20.abi);
         const balance = await sdk.balanceOfSportsIconTokens(window.CONFIG.token, userWalletAddress);
-        const vestedTokens = await sdk.getUserTotalVestedAmount(userWalletAddress);
+        const totalAmountVestedTokens = await sdk.getUserTotalVestedAmount(userWalletAddress);
         const freeTokens = await sdk.getUserFreeTokens(userWalletAddress);
         await setSDK(sdk);
         await setBalanceTokSportsIconTokens(balance);
-        await setVestedTokens(vestedTokens);
+        await setVestedTokens(totalAmountVestedTokens);
         await setFreeTokens(freeTokens);
     }
 
@@ -117,7 +117,7 @@ const ConnectWallet = () => {
         }
     }
 
-    // Listen to the event, which originate from MetaMask wallet
+    // Listen to the event, which originates from MetaMask wallet
     const subscribeToProviderEvents = async (instance) => {
         instance.on("accountsChanged", onChangeAccount);
         instance.on("chainChanged", onChangeChain);
@@ -172,12 +172,12 @@ const ConnectWallet = () => {
     return (
         <div className='buttonWrapper'>
             {userWallet ?
-                <button disabled={!isMetaMask}>{formatAddress(userWalletAddress)}</button>
+                <button className='buttonConnectivity' disabled={!isMetaMask}>{formatAddress(userWalletAddress)}</button>
                 :
                 connectionState ?
-                    <button disabled={!isMetaMask}>Connecting...</button>
+                    <button className='buttonConnectivity' disabled={!isMetaMask}>Connecting...</button>
                     :
-                    <button disabled={!isMetaMask} onClick={onConnect}>Connect</button>
+                    <button  disabled={!isMetaMask} onClick={onConnect}>Connect</button>
             }
         </div>
     )

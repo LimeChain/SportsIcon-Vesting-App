@@ -24,9 +24,8 @@ class RouterSDK {
     }
 
     async claimFreeTokens() {
-        const claimedTokens = await this.routerContract.claim();
-        console.log(claimedTokens)
-        return ethers.utils.formatUnits(claimedTokens);
+        const claimedTokensReceipt = await (await this.routerContract.claim()).wait();
+        return claimedTokensReceipt.status;
     }
 }
 
