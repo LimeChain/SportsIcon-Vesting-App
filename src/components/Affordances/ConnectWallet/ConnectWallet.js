@@ -71,10 +71,8 @@ const ConnectWallet = () => {
     }
 
     const localStorageOperations = () => {
-        if (localStorage.getItem("walletconnect")) {
-            localStorage.removeItem("walletconnect")
-            localStorage.removeItem("WEB3_CONNECT_CACHED_PROVIDER");
-        }
+        localStorage.removeItem("walletconnect")
+        localStorage.removeItem("WEB3_CONNECT_CACHED_PROVIDER");
     }
 
     const onConnect = async () => {
@@ -110,7 +108,7 @@ const ConnectWallet = () => {
 
             const userWallet = await provider.getSigner();
             const userWalletAddress = await userWallet.getAddress();
-          
+
             localStorage.setItem("connection-status", true);
 
             await setNetwork(network.name);
