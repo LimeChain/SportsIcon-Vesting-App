@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, Fragment } from 'react';
 import '../../../styles/components/_inherit.scss';
 import { useGlobalContext } from "../../../context/GlobalContext";
 import Web3Modal from 'web3modal';
@@ -70,6 +70,13 @@ const ConnectWallet = () => {
         await setFreeTokens(freeTokens);
     }
 
+    const localStorageOperations = () => {
+        if (localStorage.getItem("walletconnect")) {
+            localStorage.removeItem("walletconnect")
+            localStorage.removeItem("WEB3_CONNECT_CACHED_PROVIDER");
+        }
+    }
+
     const onConnect = async () => {
         setConnectionState(true)
         try {
@@ -96,6 +103,7 @@ const ConnectWallet = () => {
 
             if (!checkSupportedNetwork(network.chainId)) {
                 alert(`Please change network to currently supported one: ${window.CONFIG.network.network}`);
+                localStorageOperations();
                 setConnectionState(false);
                 return;
             }
@@ -121,6 +129,7 @@ const ConnectWallet = () => {
     const subscribeToProviderEvents = async (instance) => {
         instance.on("accountsChanged", onChangeAccount);
         instance.on("chainChanged", onChangeChain);
+        instance.on("disconnect", onDisconnect)
     }
 
     // Change Account Callback
@@ -145,6 +154,7 @@ const ConnectWallet = () => {
 
     // Change Network Callback
     const onChangeChain = async (networkId) => {
+        console.log('change chain made')
         const provider = await new ethers.providers.Web3Provider(instanceRef.current);
         const userWallet = await providerRef.current.getSigner();
         const userWalletAddress = await userWallet.getAddress();
@@ -161,7 +171,7 @@ const ConnectWallet = () => {
 
     // On disconnect
     const onDisconnect = async () => {
-        localStorage.removeItem("WEB3_CONNECT_CACHED_PROVIDER");
+        localStorageOperations();
         localStorage.removeItem("connection-status");
         await setUserWalletAddress('');
         await setUserWallet('');
@@ -172,7 +182,10 @@ const ConnectWallet = () => {
     return (
         <div className='buttonWrapper'>
             {userWallet ?
-                <button className='buttonConnectivity' disabled={!isMetaMask}>{formatAddress(userWalletAddress)}</button>
+                <Fragment>
+                    <button className='buttonConnectivity' disabled={!isMetaMask}>{formatAddress(userWalletAddress)}</button>
+                    <button className='buttonDisconnect' onClick={onDisconnect}>Disconnect</button>
+                </Fragment>
                 :
                 connectionState ?
                     <button className='buttonConnectivity' disabled={!isMetaMask}>Connecting...</button>
