@@ -1,4 +1,4 @@
-import '../../../styles/components/_selected-network.scss';
+import '../../../styles/components/_inherit.scss';
 import { useGlobalContext } from '../../../context/GlobalContext';
 import { formatNetworkName } from '../../../helpers/StringRenderOperations';
 

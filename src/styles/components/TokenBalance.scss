@@ -1,0 +1,22 @@
+@import '../../styles/config/colors.scss';
+
+@mixin theme($theme: DarkGray) {
+    background: $theme;
+    padding: 15px;
+    font-size: 16px;
+}
+.tokenBalanceWrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex: 1;
+    margin: 1%;
+    border-radius: 15px;
+    .label {
+        @include theme($theme: $label-color);
+    }
+    .amount {
+        @include theme($theme: $amount-color);
+    }
+}
+  

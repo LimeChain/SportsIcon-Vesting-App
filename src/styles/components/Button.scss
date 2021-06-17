@@ -1,0 +1,43 @@
+@import '../../styles/config/colors.scss';
+
+@mixin button($background:$primary-button-color) {
+    width: 250px;
+        padding: 15px;
+        font-size: 15px;
+        text-align: center;
+        cursor: pointer;
+        outline: none;
+        color: rgb(78, 81, 83);
+        background-color: $background;
+        border: none;
+        border-radius: 8px;
+}
+@mixin hover($background: $primary-button-color, $cursor: auto){
+    background-color: $background;
+    cursor: $cursor;
+}
+.buttonWrapper{
+    flex: 1;
+    margin: 1%;
+    display: flex;
+    justify-content: center;
+
+    button{
+        @include button();
+    }
+
+    button:hover {background-color: $button-color-hover}
+
+    .buttonConnectivity{
+        @include button($background:$connected-color);
+    }
+
+    .buttonConnectivity:hover{
+        @include hover($background: $connected-color);
+    }
+
+    .buttonClaiming{
+        @include button($background:$connected-color);
+    }
+}
+

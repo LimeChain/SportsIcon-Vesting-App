@@ -2,11 +2,12 @@
 
 .selectedNetworkWrapper{
     flex:1;
-    margin: 1% 25%;
+    margin: 1%;
+    display: flex;
+    justify-content: center;
     .selectedNetwork {
         border-radius: 8px;
         width: 200px;
-        text-align: center;
         padding: 15px;
         font-size: 16px;
         border: $border-selected-network-box;
