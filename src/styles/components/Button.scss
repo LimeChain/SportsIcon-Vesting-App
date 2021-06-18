@@ -1,4 +1,4 @@
-@import '../../styles/config/_inherit_config.scss';
+@import '../../styles/variables.scss';
 
 @mixin button($background:$primary-button-color) {
     width: $width-button;
