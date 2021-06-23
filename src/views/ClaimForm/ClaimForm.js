@@ -1,13 +1,13 @@
 import '../../styles/components/_inherit.scss'
-import { useGlobalContext } from '../../context/GlobalContext';
-import Balance from './Balance/Balance';
+import { useGlobalContext } from '../../hooks/useGlobalContext';
+import { showNotification } from '../../helpers/showNotification';
 
 const ClaimForm = () => {
-    const { sdk, freeTokens, setFreeTokens, setBalanceTokSportsIconTokens, transactionMining, setTransactionMining, isMetaMask, userWallet, userWalletAddress } = useGlobalContext();
+    const { sdk, freeTokens, vestedTokens, setFreeTokens, setBalanceTokSportsIconTokens, transactionMining, setTransactionMining, isMetaMask, userWallet, userWalletAddress } = useGlobalContext();
 
     const CLAIM_STATUSES = {
         success: 1
-    }
+    };
 
     const balanceOperations = async () => {
         const balance = await sdk.balanceOfSportsIconTokens(window.CONFIG.token, userWalletAddress);
@@ -22,27 +22,35 @@ const ClaimForm = () => {
             await setTransactionMining(true);
             const tokensClaimedStatus = await sdk.claimFreeTokens();
             if (tokensClaimedStatus === CLAIM_STATUSES.success) {
-                balanceOperations()
+                balanceOperations();
+                showNotification('Transaction successfully mined.')
             } else {
-                throw new Error('transaction failed');
+                throw new Error('Transaction failed mining.');
             }
         } catch (error) {
             await setTransactionMining(false);
-            // TODO show some notification
+            showNotification('Transaction failed mining.')
         }
     }
 
     return (
-        userWallet ?
-            <div className='claimForm'>
-                <Balance />
-                <div className='buttonWrapper' onClick={claimFreeTokens} >
-                    <button className={transactionMining ? 'buttonClaiming' : ''}
-                        disabled={!isMetaMask || transactionMining}>
-                        {transactionMining ? 'Claiming...' : `Claim ${freeTokens} `}
-                    </button>
+        userWallet &&
+        <div className='claimContainer'>
+            <div className="dataForm">
+                <div className='balance'>
+                    Free tokens: {freeTokens}
                 </div>
-            </div> : ''
+                <div className='balance'>
+                    Total amount vested tokens: {vestedTokens}
+                </div>
+            </div>
+            <div className='buttonWrapper' onClick={claimFreeTokens} >
+                <button className={transactionMining ? 'buttonClaiming' : ''}
+                    disabled={!isMetaMask || transactionMining}>
+                    {transactionMining ? 'Claiming...' : `Claim ${freeTokens} `}
+                </button>
+            </div>
+        </div>
     )
 }
 

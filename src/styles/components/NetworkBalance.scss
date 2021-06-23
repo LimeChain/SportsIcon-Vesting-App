@@ -1,9 +1,11 @@
 @import '../../styles/config/colors.scss';
 
-@mixin theme($theme: DarkGray) {
+@mixin theme($theme: $black) {
     background: $theme;
+    color: $white;
     padding: 15px;
     font-size: 16px;
+    padding: 21px;
 }
 .tokenBalanceWrapper{
     display: flex;
@@ -11,12 +13,12 @@
     justify-content: center;
     flex: 1;
     margin: 1%;
-    border-radius: 15px;
+      border-radius: 10px;
     .label {
-        @include theme($theme: $label-color);
+        @include theme();
     }
     .amount {
-        @include theme($theme: $amount-color);
+        @include theme();
     }
 }
   

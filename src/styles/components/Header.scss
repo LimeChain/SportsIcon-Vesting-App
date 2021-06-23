@@ -1,6 +1,10 @@
-.mainHeader{
+.mainHeader {
     display: flex;
-    flex-direction: row;
+    flex-flow: row wrap;
     justify-content: space-around;
     text-align: center;
+}
+
+.networkAndTokens{
+    flex: 3;
 }

@@ -1,15 +1,12 @@
-import '../../styles/Header.scss';
-import CurrentNetwork from '../Affordances/CurrentNetwork/CurrentNetwork';
-import ConnectWallet from '../Affordances/ConnectWallet/ConnectWallet';
-import TokenBalancePresentation from '../../views/TokenBalancePresentation/TokenBalancePresentation';
+import '../../styles/components/Header.scss';
+import TokenBalancePresentation from '../../components/Affordances/TokenBalancePresentation/TokenBalancePresentation';
+import DisconnectWallet from '../Affordances/DisconnectWallet/DisconnectWallet';
 
 const Header = () => {
-
     return (
         <header className="mainHeader">
-            <CurrentNetwork />
             <TokenBalancePresentation />
-            <ConnectWallet />
+            <DisconnectWallet />
         </header>
     )
 }

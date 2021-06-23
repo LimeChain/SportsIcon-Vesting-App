@@ -1,0 +1,49 @@
+@mixin container($background: $light-green) {
+    margin: 20vh auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: $background;
+    padding: 30px;
+    width: 30%;
+    height: 30%;
+    border-radius: 15px;
+}
+
+.claimContainer{
+    @include container();
+}
+.connectWindow{
+    @include container($background: $white);
+}
+
+.balance{
+    text-align: center;
+    padding: 21px;
+    background: #0F151F;
+    color: white;
+    font-weight: 700;
+    border-radius: 10px;
+    margin-bottom: 3.5%;
+}
+
+.welcome{
+    color: $black;
+    padding: 10px;
+    font-family: Graphik;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 44px;
+}
+.guideline{
+    color: $black;
+    padding: 10px;
+    font-family: Space Mono;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: center;
+}

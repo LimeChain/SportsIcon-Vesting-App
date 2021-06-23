@@ -1,0 +1,16 @@
+@import '../../styles/_inherit.scss';
+.noty_type__sports-icon {
+    top: 13vh;
+    background-color: $background-notification;
+    padding: 20px 30px;
+    color: $font-color-button;
+    font-weight: 600;
+    text-align: center;
+}
+
+#noty_layout__top {
+    margin: 0 25% !important;
+    width: 40% !important;
+}
+
+ 

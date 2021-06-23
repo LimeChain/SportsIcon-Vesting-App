@@ -1,54 +1,48 @@
-@import '../../styles/variables.scss';
-
-@mixin button($background:$primary-button-color) {
+@import '../../styles/_inherit.scss';
+@mixin button($background:$green) {
     width: $width-button;
-    padding: 15px;
+    padding: 21px;
     font-size: 15px;
     text-align: center;
     cursor: pointer;
     outline: none;
-    color: $font-color-button;
+    color: $white;
     background-color: $background;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
+    width: 100%;
 }
-@mixin hover($background: $primary-button-color, $cursor: auto){
-    background-color: $background;
-    cursor: $cursor;
-}
-.buttonWrapper{
+
+.buttonWrapper {
     flex: 1;
     margin: 1%;
     display: flex;
     justify-content: center;
-
-    button{
+    width: 90%;
+    &.disconnect{
+        flex: 1;
+        align-items: center;
+    }
+    button {
         @include button();
     }
-
-    button:hover {background-color: $button-color-hover}
-
-    .buttonConnectivity{
-        @include button($background:$connected-color);
+    .buttonConnectivity {
+        @include button($background: $light-green);
+        flex: 3.5;
+        height: 55%;
+        border-radius: 30px;
+        color: $green;
     }
-
-    .buttonConnectivity:hover{
-        @include hover($background: $connected-color);
+    .buttonClaiming {
+        @include button($background: $connected-color);
     }
-
-    .buttonClaiming{
-        @include button($background:$connected-color);
-    }
-
-    .buttonDisconnect{
-        border-radius: 40px;
+    .buttonDisconnect {
+        border-radius: 50%;
         margin-left: 10px;
-        background: $disconnect-button;
-        width: $width-button / 2;
+        background: $green;
+        width: 60px;
+        height: 60px;
     }
-
-    .buttonDisconnect:hover{
-        @include hover($background: $disconnect-button, $cursor: pointer);
-    } 
+    
 }
 
