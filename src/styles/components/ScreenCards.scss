@@ -30,7 +30,7 @@
         align-items: center;
         color: $black;
         padding: 10px;
-        font-family: 'GraphikBold';
+        font-family: $graphik-bold;
         font-style: normal;
         font-size: 40px;
         line-height: 44px;
@@ -41,7 +41,7 @@
     .guideline{
         color: $black;
         padding: 10px;
-        font-family: 'Space Mono';
+        font-family: $space-mono-regular;
         font-style: normal;
         font-weight: normal;
         font-size: 20px;
@@ -65,10 +65,10 @@
     background: $black;
     color: $white;
     border-radius: 10px;
-    font-family: 'Space Mono Bold';
+    font-family: $space-mono-bold;
     .amount{
         color: $green;
-        font-family: 'GraphikBold';
+        font-family: $graphik-bold;
     }
 }
 

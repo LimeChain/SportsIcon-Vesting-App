@@ -18,7 +18,7 @@
     }
     .label {
         @include theme();
-        font-family: 'Space Mono Bold';
+        font-family: $space-mono-bold;
         flex: 3;
         border-radius: 10px 0 0 10px;
     }
@@ -29,7 +29,7 @@
         align-items: center;
         justify-content: center;
         border-radius: 0 10px 10px 0;
-        font-family: 'GraphikBold';
+        font-family: $graphik-bold;
     }
 }
   

@@ -11,7 +11,7 @@
     border-radius: 10px;
     width: 100%;
     margin-bottom: 5%;
-    font-family: 'GraphikRegular';
+    font-family: $graphik-regular;
 }
 .buttonWrapper {
     flex: 1;
@@ -28,7 +28,7 @@
     }
     .buttonConnecting{
         @include button();
-        font-family: 'GraphikRegular';
+        font-family: $graphik-regular;
         &.hoverAction{
             cursor: not-allowed;
         }
@@ -66,5 +66,5 @@
     border: none;
     border-radius: 30px;
     color: $green;
-    font-family: 'GraphikRegular';
+    font-family: $graphik-regular;
 }

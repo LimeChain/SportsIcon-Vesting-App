@@ -1,4 +1,5 @@
 @import '../../styles/config/colors.scss';
+
 .selectedNetworkWrapper{
     flex:1;
     margin: 1%;
@@ -13,12 +14,12 @@
         text-align: center;
         -webkit-appearance: none;
         -moz-appearance: none;
-        font-family: 'GraphikBold';
+        font-family: $graphik-bold;
         .networkLabel{
             color: $light-gray;
             font-size: 12px;
             margin-right: 3%;
-            font-family: 'GraphikRegular';
+            font-family: $graphik-regular;
         }
     }
 }

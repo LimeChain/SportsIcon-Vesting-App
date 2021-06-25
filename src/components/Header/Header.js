@@ -4,7 +4,6 @@ import DisconnectWallet from '../Affordances/DisconnectWallet/DisconnectWallet';
 import { useGlobalContext } from '../../hooks/useGlobalContext';
 import { SportIconLogo } from '../Vectors/SportIconLogo';
 const Header = () => {
-    const icon = 'images/SportIconLogo.png';
     const { userWallet } = useGlobalContext();
     return (
         <header className="mainHeader">
