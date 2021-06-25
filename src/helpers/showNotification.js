@@ -1,5 +1,5 @@
 import Noty from 'noty';
-import '../styles/components/Main.scss'
+import '../styles/components/Main.scss';
 import "../../node_modules/noty/lib/noty.css";
 import "../../node_modules/noty/lib/themes/mint.css";
 
