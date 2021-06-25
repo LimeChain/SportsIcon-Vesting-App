@@ -16,7 +16,6 @@ const ClaimForm = () => {
         await setFreeTokens(freeTokens);
         await setTransactionMining(false);
     }
-
     const claimFreeTokens = async () => {
         try {
             await setTransactionMining(true);
@@ -38,16 +37,16 @@ const ClaimForm = () => {
         <div className='claimContainer'>
             <div className="dataForm">
                 <div className='balance'>
-                    Free tokens: {freeTokens}
+                    Free tokens <span className='amount'>{freeTokens}</span>
                 </div>
                 <div className='balance'>
-                    Total amount vested tokens: {vestedTokens}
+                    Total amount vested tokens <span className='amount'>{vestedTokens}</span>
                 </div>
             </div>
             <div className='buttonWrapper' onClick={claimFreeTokens} >
-                <button className={transactionMining ? 'buttonClaiming' : ''}
+                <button className={transactionMining ? 'buttonClaiming hoverAction' : ''}
                     disabled={!isMetaMask || transactionMining}>
-                    {transactionMining ? 'Claiming...' : `Claim ${freeTokens} `}
+                    {transactionMining ? 'Claiming...' : `Claim`}
                 </button>
             </div>
         </div>

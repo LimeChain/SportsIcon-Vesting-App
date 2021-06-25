@@ -142,11 +142,10 @@ const ConnectWallet = () => {
 
     const networkOperations = (networkToBeChecked) => {
         if (!checkSupportedNetwork(networkToBeChecked.chainId)) {
-            showNotification(`Please change network to currently supported one: ${window.CONFIG.network.network}`);
+            onDisconnect();
+            setConnectionState(false);
+            return;
         }
-        onDisconnect();
-        setConnectionState(false);
-        return;
     }
 
     // Change Network Callback
@@ -176,12 +175,12 @@ const ConnectWallet = () => {
 
     return (
         !userWallet &&
-            <div className='buttonWrapper'> {
-                connectionState ?
-                    <button className='buttonConnectivity' disabled={!isMetaMask} > Connecting... </button>
-                    :
-                    <button disabled={!isMetaMask} onClick={onConnect} > Connect </button>
-            } </div>
+        <div className='buttonWrapper'> {
+            connectionState ?
+                <button className='buttonConnecting hoverAction' disabled={!isMetaMask} > Connecting... </button>
+                :
+                <button disabled={!isMetaMask} className='buttonConnecting notConnected' onClick={onConnect} > Connect Wallet</button>
+        } </div>
     )
 }
 

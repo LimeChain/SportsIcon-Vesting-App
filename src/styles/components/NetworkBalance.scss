@@ -1,10 +1,8 @@
 @import '../../styles/config/colors.scss';
 
-@mixin theme($theme: $black) {
+@mixin theme($theme: $black, $color: $white) {
     background: $theme;
-    color: $white;
-    padding: 15px;
-    font-size: 16px;
+    color: $color;
     padding: 21px;
 }
 .tokenBalanceWrapper{
@@ -13,12 +11,68 @@
     justify-content: center;
     flex: 1;
     margin: 1%;
-      border-radius: 10px;
+    .innerContainerTokenBalanceWrapper{
+        display: flex;
+        flex-flow: row wrap;
+        width: 350px;
+    }
     .label {
         @include theme();
+        font-family: 'Space Mono Bold';
+        flex: 3;
+        border-radius: 10px 0 0 10px;
     }
     .amount {
-        @include theme();
+        @include theme($color: $green);
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0 10px 10px 0;
+        font-family: 'GraphikBold';
     }
 }
   
+@include tablet {
+    .selectedNetwork {
+        display: flex;
+        flex-flow: column;
+        :nth-child(1) { order: 1;  }
+        :nth-child(2) { order: 2; }
+    }
+}
+@include mobile {
+    .innerContainerTokenBalanceWrapper{
+        width: 75%;
+            .label{
+                padding: 14px;
+            }
+            .amount{
+                padding: 14px;
+            }
+    }
+    .selectedNetwork{
+        flex-flow: row;
+        flex: 2;
+        justify-content: center;
+    }
+}
+@include mobile-semi {
+   .innerContainerTokenBalanceWrapper{
+        width: 75%;
+            .label{
+                padding: 14px;
+            }
+            .amount{
+                padding: 14px;
+            }
+   }
+   .selectedNetwork{
+    flex-flow: row;
+    flex: 2;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+   }
+}

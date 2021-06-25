@@ -10,11 +10,24 @@
     }
 }
 
-@mixin desktop {
-    @media (min-width: 769px) {
+@mixin semi-tablet{
+    @media only screen and (min-width: 475px) and (max-width: 998px){
         @content;
     }
 }
+
+@mixin tablet {
+    @media (max-width: 999px) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: 1000px) {
+        @content;
+    }
+}
+
 
 @mixin high-end {
     @media (min-width: 2501px) {

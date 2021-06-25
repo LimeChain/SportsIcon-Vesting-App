@@ -6,9 +6,27 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+@font-face {
+  font-family: 'GraphikRegular';
+  src: local('GraphikRegular'), url(./fonts/Graphik/GraphikMedium.otf) format('truetype');
+}
+@font-face {
+  font-family: 'GraphikBold';
+  src: local('GraphikBold'), url(./fonts/Graphik/GraphikBold.otf) format('truetype');
+}
+@font-face {
+  font-family: 'Space Mono';
+  src: local('Space Mono'), url(./fonts/SpaceMono/SpaceMono-Regular.ttf) format('truetype'); 
+}
+@font-face {
+ font-family: 'Space Mono Bold';
+  src: local('Space Mono Bold'), url(./fonts/SpaceMono/SpaceMono-Bold.ttf) format('truetype');
 }

@@ -3,10 +3,13 @@ import { useGlobalContext } from '../../../hooks/useGlobalContext';
 import { formatNetworkName } from '../../../helpers/stringRenderOperations';
 
 const CurrentNetwork = () => {
-  const { userWallet, network } = useGlobalContext();
+  const { network } = useGlobalContext();
   return (
     <div className='selectedNetworkWrapper'>
-      { userWallet && <div className='selectedNetwork'>Ethereum {formatNetworkName(network)}</div>}
+      <div className='selectedNetwork'>
+        <span className='networkLabel'>Network</span>
+        <span>Ethereum {formatNetworkName(network)}</span>
+      </div>
     </div>
   )
 }

@@ -1,49 +1,161 @@
-@mixin container($background: $light-green) {
-    margin: 20vh auto;
+@mixin container($background: $light-green, $width: 35%) {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background: $background;
     padding: 30px;
-    width: 30%;
-    height: 30%;
     border-radius: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: 0;
+    margin-right: 0;
+    transform: translate(-50%, -50%);
+    width: 35%;
+    height: 40%;
+}
+@mixin connectButton(){
+    width: 100%;
+    font-size: 12px;
 }
 
 .claimContainer{
     @include container();
 }
 .connectWindow{
-    @include container($background: $white);
+    @include container($background: $white, $width: 28%);
+    .welcome{
+        display: flex;
+        align-items: center;
+        color: $black;
+        padding: 10px;
+        font-family: 'GraphikBold';
+        font-style: normal;
+        font-size: 40px;
+        line-height: 44px;
+        div{
+            margin-left: 5%;
+        }
+    }
+    .guideline{
+        color: $black;
+        padding: 10px;
+        font-family: 'Space Mono';
+        font-style: normal;
+        font-weight: normal;
+        font-size: 20px;
+        line-height: 30px;
+        text-align: center;
+    }
 }
-
+.dataForm{
+   width: 75%;
+   flex: 2;
+}
 .balance{
-    text-align: center;
-    padding: 21px;
-    background: #0F151F;
-    color: white;
-    font-weight: 700;
+    &:nth-child(1) {
+        margin-top: 10%;
+        margin-bottom: 5%;
+    }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px;
+    background: $black;
+    color: $white;
     border-radius: 10px;
-    margin-bottom: 3.5%;
+    font-family: 'Space Mono Bold';
+    .amount{
+        color: $green;
+        font-family: 'GraphikBold';
+    }
 }
 
-.welcome{
-    color: $black;
-    padding: 10px;
-    font-family: Graphik;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 40px;
-    line-height: 44px;
+@include desktop {
+    .claimContainer {
+        width: 35%;
+    }
+    .connectWindow {
+        width: 35%;
+    }
 }
-.guideline{
-    color: $black;
-    padding: 10px;
-    font-family: Space Mono;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 30px;
-    text-align: center;
+@include tablet {
+    .claimContainer {
+        width: 50%;
+    }
+    .connectWindow {
+        width: 50%;
+    }
+}
+@include mobile {
+    .claimContainer {
+        width: 85%;
+        font-size: 12px;
+        margin-top: 20%;
+        .dataForm{
+            width: 105%;
+            .balance{
+                padding: 14px;
+            }
+        }
+        .buttonWrapper{
+            width: 105%;
+        }
+    }
+    .connectWindow {
+        width: 85%;
+        .guideline{
+            font-size: 12px;
+        }
+    }
+    .buttonConnecting{
+        width: 100%;
+        &.notConnected{
+           @include connectButton();
+        }
+    }
+}
+@include mobile-semi {
+    .claimContainer {
+        width: 75%;
+        font-size: 12px;
+        margin-top: 20%;
+        .dataForm{
+            width: 105%;
+            .balance{
+                padding: 14px;
+            }
+        }
+        .buttonWrapper{
+            width: 105%;
+        }
+    }
+    .connectWindow {
+        width: 75%;
+        .guideline{
+            font-size: 12px;
+        }
+    }
+    .buttonConnecting{
+        width: 100%;
+        &.notConnected{
+            @include connectButton();
+        }
+    }
+    .guideline{
+        font-size: 12px;
+    }
+}
+@include semi-tablet{
+    .claimContainer{
+        width: 50%;
+        margin-top: 5%;
+    }
+    .connectWindow {
+        width: 50%;
+    }
+    .buttonConnecting{
+        width: 100%;
+    }
 }

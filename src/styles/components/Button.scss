@@ -1,8 +1,7 @@
 @import '../../styles/_inherit.scss';
-@mixin button($background:$green) {
-    width: $width-button;
+@mixin button($background: $green) {
+    height: 56px;
     padding: 21px;
-    font-size: 15px;
     text-align: center;
     cursor: pointer;
     outline: none;
@@ -11,14 +10,15 @@
     border: none;
     border-radius: 10px;
     width: 100%;
+    margin-bottom: 5%;
+    font-family: 'GraphikRegular';
 }
-
 .buttonWrapper {
     flex: 1;
-    margin: 1%;
     display: flex;
     justify-content: center;
-    width: 90%;
+    align-items: center;
+    width: 75%;
     &.disconnect{
         flex: 1;
         align-items: center;
@@ -26,23 +26,45 @@
     button {
         @include button();
     }
-    .buttonConnectivity {
-        @include button($background: $light-green);
-        flex: 3.5;
-        height: 55%;
-        border-radius: 30px;
-        color: $green;
+    .buttonConnecting{
+        @include button();
+        font-family: 'GraphikRegular';
+        &.hoverAction{
+            cursor: not-allowed;
+        }
+        &.notConnected{
+            width: 85%;
+            border-radius: 5px;
+        }
     }
     .buttonClaiming {
         @include button($background: $connected-color);
+        &.hoverAction{
+            cursor: not-allowed;
+        }
     }
     .buttonDisconnect {
+        background: $green;
         border-radius: 50%;
         margin-left: 10px;
-        background: $green;
-        width: 60px;
-        height: 60px;
+        margin-bottom: 0;
+        width: 56px;
+        height: 56px;
+        padding: 2px;
+        svg{
+            padding: 15px;
+        }
     }
-    
 }
-
+.userAddress {
+    flex: 3.5;
+    padding: 21px;
+    text-align: center;
+    outline: none;
+    color: $white;
+    background-color: $light-green;
+    border: none;
+    border-radius: 30px;
+    color: $green;
+    font-family: 'GraphikRegular';
+}

@@ -9,11 +9,13 @@ const TokenBalancePresentation = () => {
         <div className='networkAndTokens'>
             <CurrentNetwork />
             <div className='tokenBalanceWrapper'>
-                <div className='label'>
-                    Sports Icon tokens:
-            </div>
-                <div className='amount'>
-                    {balanceTokSportsIconTokens}
+                <div className='innerContainerTokenBalanceWrapper'>
+                    <span className='label'>
+                        Sports Icon Tokens:
+                    </span>
+                    <span className='amount'>
+                        {balanceTokSportsIconTokens}
+                    </span>
                 </div>
             </div>
         </div>

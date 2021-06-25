@@ -3,6 +3,7 @@ import '../../../styles/components/_inherit.scss';
 import { useGlobalContext } from "../../../hooks/useGlobalContext";
 import { localStorageOperations } from '../../../helpers/localStorageOperations';
 import { formatAddress } from '../../../helpers/stringRenderOperations';
+import { DisconnectIcon } from '../../Vectors/DisconnectIcon';
 
 const DisconnectWallet = () => {
     const {
@@ -25,8 +26,8 @@ const DisconnectWallet = () => {
     return (
         userWallet && <div className='buttonWrapper disconnect'> {
             <Fragment>
-                <button className='buttonConnectivity' disabled={!isMetaMask} > {formatAddress(userWalletAddress)} </button>
-                <button className='buttonDisconnect' onClick={onDisconnect} > 1 </button>
+                <div className='userAddress' disabled={!isMetaMask} > {formatAddress(userWalletAddress)} </div>
+                <button className='buttonDisconnect' onClick={onDisconnect} > <DisconnectIcon color={'white'}/> </button>
             </Fragment>
         } </div>
     )

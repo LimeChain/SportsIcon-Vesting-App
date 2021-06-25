@@ -1,16 +1,16 @@
 import { Fragment } from 'react';
-import Header from './components/Header/Header';
 import { GlobalProvider } from "./context/GlobalContext"
-import ClaimForm from './views/ClaimForm/ClaimForm';
-import ConnectWindow from './views/ConnectWindow/ConnectWindow';
+import Home from './views/Home/Home';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
     <GlobalProvider>
       <Fragment>
-        <Header></Header>
-        <ConnectWindow />
-        <ClaimForm />
+        <Header/>
+        <Home/>
+        <Footer/>
       </Fragment>
     </GlobalProvider>
   );

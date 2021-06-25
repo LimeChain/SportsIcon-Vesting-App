@@ -1,5 +1,4 @@
 @import '../../styles/config/colors.scss';
-
 .selectedNetworkWrapper{
     flex:1;
     margin: 1%;
@@ -7,14 +6,20 @@
     justify-content: center;
     .selectedNetwork {
         color: $green;
-        border-radius: 10px;
-        width: 200px;
-        font-size: 14px;
+        width: 33%;
         font-weight: 700;
-        padding: 21px;
-        font-size: 16px;
+        padding: 21px 21px 10px 21px;
+        font-size: 14px;
+        text-align: center;
         -webkit-appearance: none;
         -moz-appearance: none;
+        font-family: 'GraphikBold';
+        .networkLabel{
+            color: $light-gray;
+            font-size: 12px;
+            margin-right: 3%;
+            font-family: 'GraphikRegular';
+        }
     }
 }
-  
+
