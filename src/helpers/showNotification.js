@@ -17,12 +17,12 @@ const showNotification = (text, alert) => {
         }
     })
     new Noty({
-        alert: alert ? alert : Error, 
+        alert: alert ? alert : Error,
         text: text,
         type: 'sports-icon-alert',
         progressBar: true,
-        // timeout: 5000,
-       layout: 'topCenter',
+        timeout: 5000,
+        layout: 'topCenter',
     }).show();
 }
 export { showNotification }
