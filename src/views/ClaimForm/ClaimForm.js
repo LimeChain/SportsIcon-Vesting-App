@@ -3,7 +3,7 @@ import { useGlobalContext } from '../../hooks/useGlobalContext';
 import { showNotification } from '../../helpers/showNotification';
 
 const ClaimForm = () => {
-    const { sdk, freeTokens, vestedTokens, setFreeTokens, setBalanceTokSportsIconTokens, transactionMining, setTransactionMining, isMetaMask, userWallet, userWalletAddress } = useGlobalContext();
+    const { sdk, freeTokens, vestedTokens, setFreeTokens, setBalanceTokSportsIconTokens, transactionMining, setTransactionMining, isMetaMask, userWalletAddress } = useGlobalContext();
 
     const CLAIM_STATUSES = {
         success: 1
@@ -33,8 +33,7 @@ const ClaimForm = () => {
     }
 
     return (
-        userWallet &&
-        <div className='claimContainer'>
+        <section className='claimContainer'>
             <div className="dataForm">
                 <div className='balance'>
                     Free tokens <span className='amount'>{freeTokens}</span>
@@ -49,7 +48,7 @@ const ClaimForm = () => {
                     {transactionMining ? 'Claiming...' : `Claim`}
                 </button>
             </div>
-        </div>
+        </section>
     )
 }
 

@@ -9,6 +9,7 @@ import routerContract from '../../../abis/ISportsIconPrivateVesting.json';
 import ERC20 from '../../../abis/SportsIcon.json';
 import { showNotification } from '../../../helpers/showNotification';
 import { localStorageOperations } from '../../../helpers/localStorageOperations';
+import { formatNetworkName } from '../../../helpers/stringRenderOperations';
 
 const ConnectWallet = () => {
     const {
@@ -99,7 +100,7 @@ const ConnectWallet = () => {
             const network = await provider.getNetwork();
 
             if (!checkSupportedNetwork(network.chainId)) {
-                showNotification(`Please change network to currently supported one: ${window.CONFIG.network.network}`);
+                showNotification(`Please change network to: Ethereum ${formatNetworkName(window.CONFIG.network.network)}.`);
                 localStorageOperations();
                 setConnectionState(false);
                 return;
@@ -116,6 +117,7 @@ const ConnectWallet = () => {
             await subscribeToProviderEvents(instance);
             await setConnectionState(false);
             await updateGlobalStateQuantities(userWallet, userWalletAddress);
+
 
         } catch (e) {
             await setConnectionState(false);

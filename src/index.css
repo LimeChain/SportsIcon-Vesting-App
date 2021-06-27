@@ -15,12 +15,16 @@ code {
 }
 
 @font-face {
-  font-family: 'GraphikRegular';
-  src: local('GraphikRegular'), url(./fonts/Graphik/GraphikMedium.otf) format('truetype');
+  font-family: 'GraphikMedium';
+  src: local('GraphikMedium'), url(./fonts/Graphik/GraphikMedium.otf) format('truetype');
 }
 @font-face {
   font-family: 'GraphikBold';
   src: local('GraphikBold'), url(./fonts/Graphik/GraphikBold.otf) format('truetype');
+}
+@font-face {
+  font-family: 'GraphikRegular';
+  src: local('GraphikRegular'), url(./fonts/Graphik/GraphikRegular.otf) format('truetype');
 }
 @font-face {
   font-family: 'Space Mono';

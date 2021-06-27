@@ -1,25 +1,70 @@
 @import '../../styles/_inherit.scss';
-.noty_type__sports-icon {
-    top: 13vh;
-    background-color:  rgba(218, 170, 48, 0.1);;
-    padding: 20px 30px;
+.noty_type__sports-icon-alert{
+   // max-width: 40%;
+    background-color: #fbebc2;
+    padding: 15px 10px;
     color: #DAAA30;
     font-weight: 600;
     text-align: center;
+    font-size: 14px;
     border-radius: 10px !important;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: center; 
+    margin: 10%  auto !important;
+    svg{
+        margin-right: 2%;
+    }
+    p{
+        margin-right: 7%;
+    }
 }
-#noty_layout__top {
-    margin: 2% 30% 6% 30% !important;
-    width: 30% !important;
-}
+// #noty_layout__top {
+//margin: 2% 30% 6% 30% !important;
+// width:  700px !important;
+// }
+// #noty_layout__topRight {
+//     width: 460px;
+//   }
+//   .noty_type__reply {
+//     background-color: #fff;
+//     position: relative;
+//     padding: 0 10px 0 20px;
+//     border-radius: 10px !important;
+//     box-shadow: 1px 1px 20px rgba(0,0,0,.2)
+//   }
+//   .noty_type__reply img {
+//     position: absolute;
+//     bottom: 20px;
+//     right: 20px;
+//     width: 50px;
+//     border-radius: 50%;
+//   }
+//   .noty_type__reply h3 {
+//     margin-bottom: 0;
+//   }
+//   .noty_type__reply p {
+//     margin-top: 0px;
+//   }
+//   .noty_type__reply .noty-bull {
+//     display: inline-block;
+//     margin: 0 10px;
+//   }
+//   .noty_type__reply a {
+//     color: #1493BD;
+//     text-decoration: none;
+//   }
+  
 footer{
     position: fixed;
-    height: 50px;
+    height: 15px;
     bottom: 0px;
     left: 0px;
     right: 0px;
     margin-bottom: 0px;
     text-align: center;
+    color:  #4E4E4E;
     font-family: $graphik-regular;
 }
 

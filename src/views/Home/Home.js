@@ -1,12 +1,13 @@
 import ConnectWindow from '../ConnectWindow/ConnectWindow';
 import ClaimForm from '../ClaimForm/ClaimForm';
+import { useGlobalContext } from '../../hooks/useGlobalContext';
 
 const Home = () => {
+    const { userWallet } = useGlobalContext();
     return (
-        <div className='home'>
-            <ConnectWindow></ConnectWindow>
-            <ClaimForm></ClaimForm>
-        </div>
+        <main className='home'>
+            {userWallet ? <ClaimForm/> : <ConnectWindow/>}
+        </main>
     )
 }
 
