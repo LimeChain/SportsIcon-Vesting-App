@@ -39,11 +39,11 @@ const ClaimForm = () => {
        <section className='claimContainer'>
             <div className="dataForm">
                 <div className='balance'>
-                    <p> <span> Free tokens </span><InfoPopup text={`Free tokens ${Number(freeTokens).toFixed(2)}`} widthRestriction /></p>
+                    <p> <span> Free tokens </span><InfoPopup text={'Free tokens is the amount of tokens a user could claim to present time.'} widthRestriction /></p>
                     <span className='amount'>{renderTokenAmount(freeTokens)}</span>
                 </div>
                 <div className='balance'>
-                    <p><span> Total vested tokens </span><InfoPopup text={`Total amount vested tokens ${Number(vestedTokens).toFixed(2)}`} widthRestriction /></p>
+                    <p><span> Total vested tokens </span><InfoPopup text={'Total vested tokens is the amount of tokens a user could claim in the specific period of time.'} widthRestriction /></p>
                     <span className='amount'>{renderTokenAmount(vestedTokens)}</span>
                 </div>
             </div>

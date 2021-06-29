@@ -11,7 +11,7 @@ function InfoPopup({ text, widthRestriction, modifiers, mouseEvents }) {
         className={`popup ${widthRestriction ? 'width-restriction' : ''}`} aria-haspopup>
         <InfoIcon color={(hoverIcon || !mouseEvents) ? '' : 'white'} />
         <div className="text-container" data-text={text}></div>
-      </div>
+    </div>
     </div>
   )
 }
