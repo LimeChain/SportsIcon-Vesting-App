@@ -28,7 +28,7 @@ const showNotification = (text, type) => {
         text: text,
         type: type === 'sports-icon-success' ? 'sports-icon-success' : 'sports-icon-alert',
         progressBar: true,
-        // timeout: 5000,
+        timeout: 5000,
         maxVisible  : 1,
         layout: 'bottom',
     }).show();

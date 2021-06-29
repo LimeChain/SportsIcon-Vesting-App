@@ -27,6 +27,10 @@
         align-items: center;
     }
     button {
+        &:disabled {
+            background-color: $connected-color;
+            cursor: not-allowed
+        }
         @include button();
     }
     .buttonConnecting{

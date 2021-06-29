@@ -75,7 +75,11 @@
         }
     }
 }
-
+@mixin high-end {
+    .claimContainer{
+        height: 469px;
+    }
+}
 @include desktop {
     .claimContainer {
         width: 35%;
@@ -92,6 +96,7 @@
         width: 50%;
     }
 }
+
 @include mobile {
     .claimContainer {
         width: 90%;

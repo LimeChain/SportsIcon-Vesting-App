@@ -24,6 +24,8 @@
     "start": "react-scripts start",
     "start:testnet": "dotenv -e .env react-scripts start",
     "start:mainnet": "dotenv -e .env.production react-scripts start",
+    "build:testnet": "dotenv -e .env react-scripts build",
+    "build:mainnet": "dotenv -e .env.production react-scripts build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
