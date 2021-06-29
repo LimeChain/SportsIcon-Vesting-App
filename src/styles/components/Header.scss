@@ -4,6 +4,7 @@
     flex-flow: row wrap;
     justify-content: space-around;
     text-align: center;
+    margin-top: 0;
 }
 .networkAndTokens{
     flex: 3;
@@ -26,7 +27,7 @@
 }
 @include mobile {
     .mainHeader {
-        margin-top: 5%;
+        margin-top: 0;
         flex-flow: row wrap;
         font-size: 12px;
         :nth-child(1) { order: 1;  }
@@ -39,6 +40,7 @@
 }
 @include mobile-semi {
     .mainHeader {
+        margin-top: 0;
         flex-flow: row wrap;
         font-size: 12px;
          :nth-child(1) { order: 1;  }

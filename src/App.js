@@ -6,7 +6,7 @@ import Routes from './Routes';
 function App() {
   return (
     <GlobalProvider>
-      <div className="app-container">
+      <div className="app">
           <Router>
             <Header />
             <Routes />

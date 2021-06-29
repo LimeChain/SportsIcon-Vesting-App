@@ -7,8 +7,8 @@
     padding: 30px;
     border-radius: 15px;
     position: absolute;
-    width: 35%;
-    height: 40%;
+    width: $width;
+    height: 369px;
 }
 @mixin connectButton(){
     width: 100%;
@@ -56,7 +56,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 25px;
+    padding: 10px 20px;
     background: $black;
     color: $white;
     border-radius: 10px;
@@ -64,6 +64,15 @@
     .amount{
         color: $green;
         font-family: $graphik-bold;
+    }
+    p{
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+        align-items: center;
+        span{
+            margin-right: 5px;
+        }
     }
 }
 
@@ -85,7 +94,7 @@
 }
 @include mobile {
     .claimContainer {
-        width: 85%;
+        width: 90%;
         font-size: 12px;
         margin-top: 20%;
         .dataForm{
@@ -113,7 +122,7 @@
 }
 @include mobile-semi {
     .claimContainer {
-        width: 75%;
+        width: 90%;
         font-size: 12px;
         margin-top: 20%;
         .dataForm{

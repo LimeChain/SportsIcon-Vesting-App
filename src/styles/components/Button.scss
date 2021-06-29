@@ -1,15 +1,15 @@
 @import '../../styles/_inherit.scss';
 @mixin button($background: $green) {
-    height: 56px;
+    height: 60px;
     padding: 21px;
+    width: 100%;
     text-align: center;
     cursor: pointer;
     outline: none;
     color: $white;
     background-color: $background;
     border: none;
-    border-radius: 10px;
-    width: 100%;
+    border-radius: 5px;
     margin-bottom: 5%;
     font-family: $graphik-medium;
 }
@@ -18,7 +18,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 75%;
+    width: 330px;
+    &.claiming{
+        width: 75%;
+    }
     &.disconnect{
         flex: 1;
         align-items: center;
@@ -33,7 +36,6 @@
             cursor: not-allowed;
         }
         &.notConnected{
-            width: 85%;
             border-radius: 5px;
         }
     }

@@ -3,13 +3,20 @@ import '../styles/components/Main.scss';
 import "../../node_modules/noty/lib/noty.css";
 import "../../node_modules/noty/lib/themes/mint.css";
 import { Error } from "../components/Vectors/Error";
-const showNotification = (text, alert) => {
+import { Success } from '../components/Vectors/Success';
+
+const showNotification = (text, type) => {
     Noty.overrideDefaults({
         callbacks: {
             onTemplate: function () {
                 if (this.options.type === 'sports-icon-alert') {
-                    this.barDom.innerHTML = '<div class="my-custom-template noty_body">';
+                    this.barDom.innerHTML = '<div class="noty-error">';
                     this.barDom.innerHTML += this.options.alert + '<p class="noty-reply">Error</p>';
+                    this.barDom.innerHTML += '<p>' + this.options.text + '</p>';
+                    this.barDom.innerHTML += '</ div>';
+                } else if (this.options.type === 'sports-icon-success'){
+                    this.barDom.innerHTML = '<div class="my-custom-template noty_body">';
+                    this.barDom.innerHTML += this.options.alert + '<p class="noty-reply">Success</p>';
                     this.barDom.innerHTML += '<p>' + this.options.text + '</p>';
                     this.barDom.innerHTML += '</ div>';
                 }
@@ -17,12 +24,13 @@ const showNotification = (text, alert) => {
         }
     })
     new Noty({
-        alert: alert ? alert : Error,
+        alert: type === 'sports-icon-success' ? Success : Error,
         text: text,
-        type: 'sports-icon-alert',
+        type: type === 'sports-icon-success' ? 'sports-icon-success' : 'sports-icon-alert',
         progressBar: true,
-        timeout: 5000,
-        layout: 'topCenter',
+        // timeout: 5000,
+        maxVisible  : 1,
+        layout: 'bottom',
     }).show();
 }
 export { showNotification }

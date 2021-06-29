@@ -34,6 +34,11 @@
 }
   
 @include tablet {
+    .tokenBalanceWrapper{
+        .innerContainerTokenBalanceWrapper{
+            width: 275px;
+        }
+    }   
     .selectedNetwork {
         display: flex;
         flex-flow: column;
@@ -42,14 +47,16 @@
     }
 }
 @include mobile {
+    .tokenBalanceWrapper{
     .innerContainerTokenBalanceWrapper{
-        width: 75%;
+        width: 275px;
             .label{
                 padding: 14px;
             }
             .amount{
                 padding: 14px;
             }
+    }
     }
     .selectedNetwork{
         flex-flow: row;
@@ -59,12 +66,12 @@
 }
 @include mobile-semi {
    .innerContainerTokenBalanceWrapper{
-        width: 75%;
+        width: 275px;
             .label{
-                padding: 14px;
+                padding: 12px 0px;
             }
             .amount{
-                padding: 14px;
+                 padding: 12px 40px;
             }
    }
    .selectedNetwork{

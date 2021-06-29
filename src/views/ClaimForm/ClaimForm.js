@@ -1,6 +1,9 @@
 import '../../styles/components/_inherit.scss'
 import { useGlobalContext } from '../../hooks/useGlobalContext';
 import { showNotification } from '../../helpers/showNotification';
+import { renderTokenAmount } from '../../helpers/stringRenderOperations';
+
+import InfoPopup from '../../components/Affordances/InfoPopup/InfoPopup';
 
 const ClaimForm = () => {
     const { sdk, freeTokens, vestedTokens, setFreeTokens, setBalanceTokSportsIconTokens, transactionMining, setTransactionMining, isMetaMask, userWalletAddress } = useGlobalContext();
@@ -22,7 +25,7 @@ const ClaimForm = () => {
             const tokensClaimedStatus = await sdk.claimFreeTokens();
             if (tokensClaimedStatus === CLAIM_STATUSES.success) {
                 balanceOperations();
-                showNotification('Transaction successfully mined.')
+                showNotification('Transaction successfully mined.', 'sports-icon-success')
             } else {
                 throw new Error('Transaction failed mining.');
             }
@@ -33,16 +36,18 @@ const ClaimForm = () => {
     }
 
     return (
-        <section className='claimContainer'>
+       <section className='claimContainer'>
             <div className="dataForm">
                 <div className='balance'>
-                    Free tokens <span className='amount'>{freeTokens}</span>
+                    <p> <span> Free tokens </span><InfoPopup text={`Free tokens ${Number(freeTokens).toFixed(2)}`} widthRestriction /></p>
+                    <span className='amount'>{renderTokenAmount(freeTokens)}</span>
                 </div>
                 <div className='balance'>
-                    Total amount vested tokens <span className='amount'>{vestedTokens}</span>
+                    <p><span> Total vested tokens </span><InfoPopup text={`Total amount vested tokens ${Number(vestedTokens).toFixed(2)}`} widthRestriction /></p>
+                    <span className='amount'>{renderTokenAmount(vestedTokens)}</span>
                 </div>
             </div>
-            <div className='buttonWrapper' onClick={claimFreeTokens} >
+            <div className='buttonWrapper claiming' onClick={claimFreeTokens} >
                 <button className={transactionMining ? 'buttonClaiming hoverAction' : ''}
                     disabled={!isMetaMask || transactionMining}>
                     {transactionMining ? 'Claiming...' : `Claim`}
