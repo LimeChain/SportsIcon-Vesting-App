@@ -30,10 +30,11 @@ const ClaimForm = () => {
     const claimFreeTokens = async () => {
         try {
             await setTransactionMining(true);
-            const tokensClaimedStatus = await sdk.claimFreeTokens();
-            if (tokensClaimedStatus === CLAIM_STATUSES.success) {
+            const tokensClaimedReceipt = await sdk.claimFreeTokens();
+            if (tokensClaimedReceipt.status === CLAIM_STATUSES.success) {
                 balanceOperations();
-                showNotification('Transaction successfully mined.', 'sports-icon-success')
+                const linkToExplorer = window.CONFIG.network.explorer_url  + tokensClaimedReceipt.transactionHash;
+                showNotification(`Transaction successfully mined.`, 'sports-icon-success', linkToExplorer);
             } else {
                 throw new Error('Transaction failed mining.');
             }

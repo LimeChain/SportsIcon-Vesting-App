@@ -29,6 +29,13 @@
 }
 .noty_type__sports-icon-success{
     @include notifications($background: $background-notification-success, $color: $notifications-font-color-success);
+    a{  
+        display: block;
+        text-decoration: none;
+        font-size: 16px;
+        font-family: $graphik-bold;
+        color: $notifications-font-color-success;
+    }
 }
 @include mobile-semi {
     .noty_type__sports-icon-alert{
@@ -38,6 +45,9 @@
     .noty_type__sports-icon-success{
         width: 300px;
         font-size: 12px;
+        a{
+            font-size: 12px;
+        }
     }
 }
 @include mobile {
@@ -47,6 +57,9 @@
     }
     .noty_type__sports-icon-success{
         width: 300px;
+        font-size: 12px;
+    }
+    a{
         font-size: 12px;
     }
 }  
