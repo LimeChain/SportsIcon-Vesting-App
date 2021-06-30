@@ -3,7 +3,6 @@ import { useGlobalContext } from '../../hooks/useGlobalContext';
 import { showNotification } from '../../helpers/showNotification';
 import { renderTokenAmount } from '../../helpers/stringRenderOperations';
 import InfoPopup from '../../components/Affordances/InfoPopup/InfoPopup';
-import AmountPopup from '../../components/Affordances/AmountPopup/AmountPopup';
 import { useEffect, useState } from 'react';
 
 const ClaimForm = () => {
@@ -53,7 +52,7 @@ const ClaimForm = () => {
                 </div>
                 <div className='balance'>
                     <p><span> Total vested tokens </span><InfoPopup text={'Total vested tokens is the amount of tokens a user could claim during specific period of time.'} widthRestriction /></p>
-                    <span className='amount'>{renderTokenAmount(vestedTokens)}<span><AmountPopup text='tookens' widthRestriction /></span></span>
+                    <span className='amount'>{renderTokenAmount(vestedTokens)}</span>
                 </div>
             </div>
             <div className='buttonWrapper claiming'>
