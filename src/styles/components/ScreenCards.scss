@@ -75,7 +75,8 @@
         }
     }
 }
-@mixin high-end {
+
+@include high-end {
     .claimContainer{
         height: 469px;
     }
@@ -91,24 +92,29 @@
 @include tablet {
     .claimContainer {
         width: 50%;
+        margin-top: 20%;
     }
     .connectWindow {
         width: 50%;
     }
 }
-
 @include mobile {
     .claimContainer {
         width: 90%;
         font-size: 12px;
-        margin-top: 20%;
+        margin-top: 0%;
         .dataForm{
             width: 105%;
+            flex: 0.5;
             .balance{
                 padding: 14px;
+                p{
+                    margin: 0;
+                }
             }
         }
         .buttonWrapper{
+            flex: 0.25;
             width: 105%;
         }
     }
@@ -127,13 +133,17 @@
 }
 @include mobile-semi {
     .claimContainer {
+        background-color:  #FCFCF7;;
         width: 90%;
         font-size: 12px;
-        margin-top: 20%;
+        margin-top: 0%;
         .dataForm{
             width: 105%;
             .balance{
                 padding: 14px;
+                p{
+                    margin: 0;
+                }
             }
         }
         .buttonWrapper{
