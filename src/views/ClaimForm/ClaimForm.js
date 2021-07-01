@@ -56,7 +56,7 @@ const ClaimForm = () => {
             </div>
             <div className='buttonWrapper claiming'>
                 <button onClick={claimFreeTokens} className={transactionMining ? 'buttonClaiming hoverAction' : ''}
-                    disabled={!isMetaMask || transactionMining || !freeTokensBool}>
+                    disabled={!isMetaMask || transactionMining }>
                     {transactionMining ? 'Claiming...' : `Claim`}
                 </button>
             </div>

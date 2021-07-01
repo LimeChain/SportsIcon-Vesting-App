@@ -1,7 +1,7 @@
 import '../../../styles/components/_inherit.scss';
 import { useGlobalContext } from '../../../hooks/useGlobalContext';
 import CurrentNetwork from '../CurrentNetwork/CurrentNetwork';
-
+import { renderTokenAmount } from '../../../helpers/stringRenderOperations'
 const TokenBalancePresentation = () => {
     const { balanceTokSportsIconTokens, userWallet } = useGlobalContext();
     return (
@@ -14,7 +14,7 @@ const TokenBalancePresentation = () => {
                         Sports Icon Tokens:
                     </span>
                     <span className='amount'>
-                        {balanceTokSportsIconTokens}
+                        {renderTokenAmount(balanceTokSportsIconTokens)}
                     </span>
                 </div>
             </div>

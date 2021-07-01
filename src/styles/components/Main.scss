@@ -26,6 +26,9 @@
 }
 .noty_type__sports-icon-alert{
    @include notifications();
+    svg{
+        margin-left: 5%;
+    }
 }
 .noty_type__sports-icon-success{
     @include notifications($background: $background-notification-success, $color: $notifications-font-color-success);
@@ -41,6 +44,9 @@
     .noty_type__sports-icon-alert{
         width: 300px;
         font-size: 12px;
+        svg{
+            margin-left: 4%;
+        }
     }
     .noty_type__sports-icon-success{
         width: 300px;
@@ -54,6 +60,9 @@
     .noty_type__sports-icon-alert{
         width: 300px;
         font-size: 12px;
+        svg{
+            margin-left: 4%;
+        }
     }
     .noty_type__sports-icon-success{
         width: 300px;
