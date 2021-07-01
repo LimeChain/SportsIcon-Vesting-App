@@ -50,6 +50,7 @@ const ConnectWallet = () => {
         } else {
             setMetaMask(true)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {
@@ -58,6 +59,7 @@ const ConnectWallet = () => {
             if (isConnected) await onConnect()
         }
         getData()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const checkSupportedNetwork = (chosenNetwork) => {

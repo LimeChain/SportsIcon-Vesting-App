@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-
+ // react/jsx-no-duplicate-props
 const SportIconLogo = () => {
     const [dimensions, setDimeonsions] = useState('100');
 
@@ -22,6 +22,7 @@ const SportIconLogo = () => {
         window.addEventListener("resize", handleResize);
         handleResize();
         return () => window.removeEventListener("resize", handleResize);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (

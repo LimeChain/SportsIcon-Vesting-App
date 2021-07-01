@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { InfoIcon } from "../../Vectors/InfoIcon";
 
 function InfoPopup({ text, widthRestriction, modifiers }) {
