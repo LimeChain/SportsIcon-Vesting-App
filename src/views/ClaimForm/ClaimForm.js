@@ -33,7 +33,7 @@ const ClaimForm = () => {
             const tokensClaimedReceipt = await sdk.claimFreeTokens();
             if (tokensClaimedReceipt.status === CLAIM_STATUSES.success) {
                 balanceOperations();
-                const linkToExplorer = window.CONFIG.network.explorer_url  + tokensClaimedReceipt.transactionHash;
+                const linkToExplorer = window.CONFIG.network.explorer_url + tokensClaimedReceipt.transactionHash;
                 showNotification(`Transaction successfully mined.`, 'sports-icon-success', linkToExplorer);
             }
         } catch (error) {
@@ -46,11 +46,11 @@ const ClaimForm = () => {
         <section className='claimContainer'>
             <div className="dataForm">
                 <div className='balance'>
-                    <p> <span> Free tokens </span><InfoPopup text={'Free tokens is the amount of tokens a user could claim to present time.'} widthRestriction /></p>
+                    <div className='freeTokensPopupWrapper'> <span> Free tokens </span><InfoPopup text={'Free tokens is the amount of tokens a user could claim to present time.'} widthRestriction /></div>
                     <span className='amount'>{renderTokenAmount(freeTokens)}</span>
                 </div>
                 <div className='balance'>
-                    <p><span> Total vested tokens </span><InfoPopup text={'Total vested tokens is the amount of tokens a user could claim during specific period of time.'} widthRestriction /></p>
+                    <div className='freeTokensPopupWrapper'><span> Total vested tokens </span><InfoPopup text={'Total vested tokens is the amount of tokens a user could claim during specific period of time.'} widthRestriction /></div>
                     <span className='amount'>{renderTokenAmount(vestedTokens)}</span>
                 </div>
             </div>
