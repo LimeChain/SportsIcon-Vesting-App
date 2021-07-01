@@ -35,12 +35,10 @@ const ClaimForm = () => {
                 balanceOperations();
                 const linkToExplorer = window.CONFIG.network.explorer_url  + tokensClaimedReceipt.transactionHash;
                 showNotification(`Transaction successfully mined.`, 'sports-icon-success', linkToExplorer);
-            } else {
-                throw new Error('Transaction failed mining.');
             }
         } catch (error) {
             await setTransactionMining(false);
-            showNotification('Transaction failed mining.')
+            showNotification("Transaction wasn't successfully mined.")
         }
     }
 
