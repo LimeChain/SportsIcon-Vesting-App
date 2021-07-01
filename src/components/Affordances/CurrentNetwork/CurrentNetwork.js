@@ -1,15 +1,15 @@
 import '../../../styles/components/_inherit.scss';
-import { useGlobalContext } from '../../../context/GlobalContext';
-import { formatNetworkName } from '../../../helpers/StringRenderOperations';
+import { useGlobalContext } from '../../../hooks/useGlobalContext';
+import { formatNetworkName } from '../../../helpers/stringRenderOperations';
 
 const CurrentNetwork = () => {
-  const { userWallet, network } = useGlobalContext();
+  const { network } = useGlobalContext();
   return (
     <div className='selectedNetworkWrapper'>
-      { !userWallet ?
-        'Network'
-        :
-        <div className='selectedNetwork'>Ethereum {formatNetworkName(network)}</div>}
+      <div className='selectedNetwork'>
+        <span className='networkLabel'>Network</span>
+        <span>Ethereum {formatNetworkName(network)}</span>
+      </div>
     </div>
   )
 }

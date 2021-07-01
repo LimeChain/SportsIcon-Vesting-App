@@ -25,7 +25,7 @@ class RouterSDK {
 
     async claimFreeTokens() {
         const claimedTokensReceipt = await (await this.routerContract.claim()).wait();
-        return claimedTokensReceipt.status;
+        return claimedTokensReceipt;
     }
 }
 

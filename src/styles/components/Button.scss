@@ -1,54 +1,76 @@
-@import '../../styles/variables.scss';
-
-@mixin button($background:$primary-button-color) {
-    width: $width-button;
-    padding: 15px;
-    font-size: 15px;
+@import '../../styles/_inherit.scss';
+@mixin button($background: $green) {
+    height: 60px;
+    padding: 21px;
+    width: 100%;
     text-align: center;
     cursor: pointer;
     outline: none;
-    color: $font-color-button;
+    color: $white;
     background-color: $background;
     border: none;
-    border-radius: 8px;
+    border-radius: 5px;
+    margin-bottom: 5%;
+    font-family: $graphik-medium;
 }
-@mixin hover($background: $primary-button-color, $cursor: auto){
-    background-color: $background;
-    cursor: $cursor;
-}
-.buttonWrapper{
+.buttonWrapper {
     flex: 1;
-    margin: 1%;
     display: flex;
     justify-content: center;
-
-    button{
+    align-items: center;
+    width: 330px;
+    &.claiming{
+        width: 75%;
+    }
+    &.disconnect{
+        flex: 1;
+        align-items: center;
+    }
+    button {
+        &:disabled {
+            background-color: $connected-color;
+            cursor: not-allowed
+        }
         @include button();
     }
-
-    button:hover {background-color: $button-color-hover}
-
-    .buttonConnectivity{
-        @include button($background:$connected-color);
+    .buttonConnecting{
+        @include button();
+        font-family: $graphik-medium;
+        &.hoverAction{
+            cursor: not-allowed;
+        }
+        &.notConnected{
+            border-radius: 5px;
+        }
     }
-
-    .buttonConnectivity:hover{
-        @include hover($background: $connected-color);
+    .buttonClaiming {
+        @include button($background: $connected-color);
+        &.hoverAction{
+            cursor: not-allowed;
+        }
     }
-
-    .buttonClaiming{
-        @include button($background:$connected-color);
-    }
-
-    .buttonDisconnect{
-        border-radius: 40px;
+    .buttonDisconnect {
+        background: $green;
+        border-radius: 50%;
         margin-left: 10px;
-        background: $disconnect-button;
-        width: $width-button / 2;
+        margin-bottom: 0;
+        width: 56px;
+        height: 56px;
+        padding: 2px;
+        svg{
+            padding: 15px;
+        }
     }
-
-    .buttonDisconnect:hover{
-        @include hover($background: $disconnect-button, $cursor: pointer);
-    } 
 }
-
+.userAddress {
+    flex: 3.5;
+    padding: 21px;
+    text-align: center;
+    outline: none;
+    color: $white;
+    background-color: $light-green;
+    border: none;
+    border-radius: 30px;
+    color: $green;
+    font-family: $graphik-medium;
+}

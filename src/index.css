@@ -1,13 +1,41 @@
 body {
-  margin: 0;
+  background-color:  #FCFCF7;
+  margin: 0 5%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+}
+
+.app{
+  position: relative;
+  min-height: 100vh;   
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+@font-face {
+  font-family: 'GraphikMedium';
+  src: local('GraphikMedium'), url(./fonts/Graphik/GraphikMedium.otf) format('truetype');
+}
+@font-face {
+  font-family: 'GraphikBold';
+  src: local('GraphikBold'), url(./fonts/Graphik/GraphikBold.otf) format('truetype');
+}
+@font-face {
+  font-family: 'GraphikRegular';
+  src: local('GraphikRegular'), url(./fonts/Graphik/GraphikRegular.otf) format('truetype');
+}
+@font-face {
+  font-family: 'Space Mono';
+  src: local('Space Mono'), url(./fonts/SpaceMono/SpaceMono-Regular.ttf) format('truetype'); 
+}
+@font-face {
+ font-family: 'Space Mono Bold';
+  src: local('Space Mono Bold'), url(./fonts/SpaceMono/SpaceMono-Bold.ttf) format('truetype');
 }

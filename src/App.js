@@ -1,15 +1,19 @@
-import { Fragment } from 'react';
-import Header from './components/Header/Header';
 import { GlobalProvider } from "./context/GlobalContext"
-import ClaimForm from './views/ClaimForm/ClaimForm';
+import { BrowserRouter as Router } from "react-router-dom"
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import Routes from './Routes';
 
 function App() {
   return (
     <GlobalProvider>
-      <Fragment>
-        <Header></Header>
-        <ClaimForm />
-      </Fragment>
+      <div className="app">
+          <Router>
+            <Header />
+            <Routes />
+            <Footer />
+          </Router>
+      </div>
     </GlobalProvider>
   );
 }

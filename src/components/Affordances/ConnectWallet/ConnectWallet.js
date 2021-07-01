@@ -1,22 +1,27 @@
-import { useEffect, useState, useRef, Fragment } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import '../../../styles/components/_inherit.scss';
-import { useGlobalContext } from "../../../context/GlobalContext";
+import { useGlobalContext } from "../../../hooks/useGlobalContext";
 import Web3Modal from 'web3modal';
 import { ethers } from 'ethers';
-import { formatAddress } from '../../../helpers/StringRenderOperations';
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import RouterSDK from '../../../sdk/sdk';
 import routerContract from '../../../abis/ISportsIconPrivateVesting.json';
 import ERC20 from '../../../abis/SportsIcon.json';
+import { showNotification } from '../../../helpers/showNotification';
+import { localStorageOperations } from '../../../helpers/localStorageOperations';
+import { formatNetworkName } from '../../../helpers/stringRenderOperations';
 
 const ConnectWallet = () => {
     const {
         setNetwork,
-        userWallet, setUserWallet,
-        userWalletAddress, setUserWalletAddress,
+        userWallet,
+        setUserWallet,
+        setUserWalletAddress,
         setSDK,
-        connectionState, setConnectionState,
-        isMetaMask, setMetaMask,
+        connectionState,
+        setConnectionState,
+        isMetaMask,
+        setMetaMask,
         setBalanceTokSportsIconTokens,
         setVestedTokens,
         setFreeTokens,
@@ -41,10 +46,11 @@ const ConnectWallet = () => {
     useEffect(() => {
         if (!window.ethereum?.isMetaMask || !window.web3) {
             setMetaMask(false)
-            alert('Please install MetaMask wallet.')
+            showNotification('Please install MetaMask wallet.')
         } else {
             setMetaMask(true)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {
@@ -53,6 +59,7 @@ const ConnectWallet = () => {
             if (isConnected) await onConnect()
         }
         getData()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const checkSupportedNetwork = (chosenNetwork) => {
@@ -68,11 +75,6 @@ const ConnectWallet = () => {
         await setBalanceTokSportsIconTokens(balance);
         await setVestedTokens(totalAmountVestedTokens);
         await setFreeTokens(freeTokens);
-    }
-
-    const localStorageOperations = () => {
-        localStorage.removeItem("walletconnect")
-        localStorage.removeItem("WEB3_CONNECT_CACHED_PROVIDER");
     }
 
     const onConnect = async () => {
@@ -100,7 +102,7 @@ const ConnectWallet = () => {
             const network = await provider.getNetwork();
 
             if (!checkSupportedNetwork(network.chainId)) {
-                alert(`Please change network to currently supported one: ${window.CONFIG.network.network}`);
+                showNotification(`Please change network to: Ethereum ${formatNetworkName(window.CONFIG.network.network)}.`);
                 localStorageOperations();
                 setConnectionState(false);
                 return;
@@ -117,6 +119,7 @@ const ConnectWallet = () => {
             await subscribeToProviderEvents(instance);
             await setConnectionState(false);
             await updateGlobalStateQuantities(userWallet, userWalletAddress);
+
 
         } catch (e) {
             await setConnectionState(false);
@@ -143,16 +146,14 @@ const ConnectWallet = () => {
 
     const networkOperations = (networkToBeChecked) => {
         if (!checkSupportedNetwork(networkToBeChecked.chainId)) {
-            alert(`Please change network to currently supported one: ${window.CONFIG.network.network}`);
+            onDisconnect();
+            setConnectionState(false);
+            return;
         }
-        onDisconnect();
-        setConnectionState(false);
-        return;
     }
 
     // Change Network Callback
     const onChangeChain = async (networkId) => {
-        console.log('change chain made')
         const provider = await new ethers.providers.Web3Provider(instanceRef.current);
         const userWallet = await providerRef.current.getSigner();
         const userWalletAddress = await userWallet.getAddress();
@@ -170,7 +171,6 @@ const ConnectWallet = () => {
     // On disconnect
     const onDisconnect = async () => {
         localStorageOperations();
-        localStorage.removeItem("connection-status");
         await setUserWalletAddress('');
         await setUserWallet('');
         await setSDK('');
@@ -178,22 +178,15 @@ const ConnectWallet = () => {
     }
 
     return (
-        <div className='buttonWrapper'>
-            {userWallet ?
-                <Fragment>
-                    <button className='buttonConnectivity' disabled={!isMetaMask}>{formatAddress(userWalletAddress)}</button>
-                    <button className='buttonDisconnect' onClick={onDisconnect}>Disconnect</button>
-                </Fragment>
+        !userWallet &&
+        <div className='buttonWrapper'> {
+            connectionState ?
+                <button className='buttonConnecting hoverAction' disabled={!isMetaMask} > Connecting... </button>
                 :
-                connectionState ?
-                    <button className='buttonConnectivity' disabled={!isMetaMask}>Connecting...</button>
-                    :
-                    <button disabled={!isMetaMask} onClick={onConnect}>Connect</button>
-            }
-        </div>
+                <button disabled={!isMetaMask} className='buttonConnecting notConnected' onClick={onConnect} > Connect Wallet</button>
+        } </div>
     )
 }
 
 
 export default ConnectWallet;
-

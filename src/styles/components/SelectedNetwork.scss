@@ -6,13 +6,21 @@
     display: flex;
     justify-content: center;
     .selectedNetwork {
-        border-radius: 8px;
-        width: 200px;
-        padding: 15px;
-        font-size: 16px;
-        border: $border-selected-network-box;
+        color: $green;
+        width: 33%;
+        font-weight: 700;
+        padding: 21px 21px 10px 21px;
+        font-size: 14px;
+        text-align: center;
         -webkit-appearance: none;
         -moz-appearance: none;
+        font-family: $graphik-bold;
+        .networkLabel{
+            color: $light-gray;
+            font-size: 12px;
+            margin-right: 3%;
+            font-family: $graphik-medium;
+        }
     }
 }
-  
+

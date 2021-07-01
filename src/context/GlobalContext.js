@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useState } from "react";
 
 const initialState = {
     isMetaMask: false,
@@ -14,8 +14,8 @@ const initialState = {
     transactionMining: false,
 }
 
-const GlobalContext = createContext(initialState);
-const UpdateGlobalContext = createContext();
+export const GlobalContext = createContext(initialState);
+export const UpdateGlobalContext = createContext();
 
 export function GlobalProvider({ children }) {
     const [isMetaMask, setMetaMask] = useState(initialState.isMetaMask);
@@ -65,12 +65,3 @@ export function GlobalProvider({ children }) {
     )
 }
 
-export function useGlobalContext() {
-    const globalContext = useContext(GlobalContext)
-    const updateGlobalContext = useContext(UpdateGlobalContext)
-
-    return {
-        ...globalContext,
-        ...updateGlobalContext
-    }
-}

@@ -1,0 +1,26 @@
+.not-found {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    h2 {
+      font-family: $graphik-bold;
+      font-size: 100px;
+      margin-top: 20vh;
+      color: $green;
+      line-height: 16px;
+    }
+    p {
+      font-size: 40px;
+      margin-top: 5px;
+      font-weight: 700;
+      line-height: 16px;
+      color: $dark-gray;
+    }
+    button {
+      font-family: $graphik-bold;
+      text-decoration:none;
+      font-size: 16px;
+      color: $white;
+      margin-top: 20px;
+    }
+}
