@@ -78,6 +78,7 @@
 
 @include high-end {
     .claimContainer{
+        width: 25%;
         height: 469px;
     }
 }
@@ -92,12 +93,12 @@
 @include tablet {
     .claimContainer {
         width: 50%;
-        margin-top: 20%;
     }
     .connectWindow {
         width: 50%;
     }
 }
+
 @include mobile {
     .claimContainer {
         width: 90%;
@@ -167,6 +168,10 @@
     }
 }
 @include semi-tablet{
+    .dataForm{
+        width: 90%;
+        flex: 2;
+     }
     .claimContainer{
         width: 50%;
         margin-top: 5%;
