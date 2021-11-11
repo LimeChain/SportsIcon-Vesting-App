@@ -3,23 +3,35 @@
 @mixin theme($theme: $black, $color: $white) {
     background: $theme;
     color: $color;
-    padding: 21px;
+    padding: 10px;
 }
-.tokenBalanceWrapper{
+.contractTokens{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     flex: 1;
     margin: 1%;
-    .innerContainerTokenBalanceWrapper{
+    position: relative;
+    &.content {
+        border-radius: 5px 0 0 5px;
+        margin: 0;
+        .label {
+            border-radius: 0;
+        }
+        .amount {
+            border-radius: 0;
+        }
+    }
+    .contractTokensWrapper{
         display: flex;
         flex-flow: row wrap;
         width: 350px;
     }
     .label {
         @include theme();
+        flex-basis: 45%;
         font-family: $space-mono-bold;
-        flex: 3;
         border-radius: 5px 0 0 5px;
     }
     .amount {
@@ -30,12 +42,13 @@
         justify-content: center;
         border-radius: 0 5px 5px 0;
         font-family: $graphik-bold;
+        padding: 0;
     }
 }
   
 @include tablet {
-    .tokenBalanceWrapper{
-        .innerContainerTokenBalanceWrapper{
+    .contractTokens{
+        .contractTokensWrapper{
             width: 275px;
         }
     }   
@@ -47,15 +60,15 @@
     }
 }
 @include mobile {
-    .tokenBalanceWrapper{
-    .innerContainerTokenBalanceWrapper{
+    .contractTokens{
+    .contractTokensWrapper{
         width: 275px;
-            .label{
-                padding: 14px;
-            }
-            .amount{
-                padding: 14px;
-            }
+            // .label{
+            //     padding: 14px;
+            // }
+            // .amount{
+            //     padding: 14px;
+            // }
     }
     }
     .selectedNetwork{
@@ -65,14 +78,14 @@
     }
 }
 @include mobile-semi {
-   .innerContainerTokenBalanceWrapper{
+   .contractTokensWrapper{
         width: 275px;
-            .label{
-                padding: 12px 0px;
-            }
-            .amount{
-                 padding: 12px 40px;
-            }
+            // .label{
+            //     padding: 12px 0px;
+            // }
+            // .amount{
+            //      padding: 12px 40px;
+            // }
    }
    .selectedNetwork{
     flex-flow: row;
