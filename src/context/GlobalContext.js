@@ -8,6 +8,7 @@ const initialState = {
     userWalletAddress: '',
     transactionIsInProgress: false,
     sdk: '',
+    contract: 0,
     balanceSportsIconTokens: 0,
     vestedTokens: 0,
     freeTokens: 0,
@@ -19,13 +20,13 @@ export const UpdateGlobalContext = createContext();
 
 export function GlobalProvider({ children }) {
     const [isMetaMask, setMetaMask] = useState(initialState.isMetaMask);
-    const [balanceTokSportsIconTokens, setBalanceTokSportsIconTokens] = useState(initialState.balanceSportsIconTokens);
+    const [balanceIcons, setBalanceIcons] = useState(initialState.balanceSportsIconTokens);
+    const [contract, setContract] = useState(initialState.contract);
     const [network, setNetwork] = useState(initialState.network);
     const [userWallet, setUserWallet] = useState(initialState.userWallet);
     const [userWalletAddress, setUserWalletAddress] = useState(initialState.userWalletAddress);
     const [transactionIsInProgress, setTransactionIsInProgress] = useState(initialState.transactionIsInProgress);
     const [sdk, setSDK] = useState(initialState.sdk);
-    const [balanceSportsIconTokens, setBalanceSportsIconTokens] = useState(initialState.balanceSportsIconTokens);
     const [vestedTokens, setVestedTokens] = useState(initialState.vestedTokens);
     const [freeTokens, setFreeTokens] = useState(initialState.freeTokens);
     const [connectionState, setConnectionState] = useState(initialState.connectionState);
@@ -35,28 +36,28 @@ export function GlobalProvider({ children }) {
             userWallet,
             userWalletAddress,
             transactionIsInProgress,
+            contract,
             sdk,
-            balanceSportsIconTokens,
             vestedTokens,
             freeTokens,
             connectionState,
             isMetaMask,
             network,
-            balanceTokSportsIconTokens,
+            balanceIcons,
             transactionMining
         }}>
             <UpdateGlobalContext.Provider value={{
                 setUserWallet,
                 setUserWalletAddress,
                 setTransactionIsInProgress,
+                setContract,
                 setSDK,
-                setBalanceSportsIconTokens,
                 setVestedTokens,
                 setFreeTokens,
                 setConnectionState,
                 setMetaMask,
                 setNetwork,
-                setBalanceTokSportsIconTokens,
+                setBalanceIcons,
                 setTransactionMining
             }}>
                 {children}

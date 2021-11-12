@@ -112,7 +112,7 @@
                 },
                 {
                     "internalType": "uint256",
-                    "name": "amount",
+                    "name": "details",
                     "type": "uint256"
                 }
             ],
@@ -150,7 +150,7 @@
             "inputs": [
                 {
                     "internalType": "uint256",
-                    "name": "amount",
+                    "name": "details",
                     "type": "uint256"
                 }
             ],
@@ -168,7 +168,7 @@
                 },
                 {
                     "internalType": "uint256",
-                    "name": "amount",
+                    "name": "details",
                     "type": "uint256"
                 }
             ],
@@ -303,7 +303,7 @@
                 },
                 {
                     "internalType": "uint256",
-                    "name": "amount",
+                    "name": "details",
                     "type": "uint256"
                 },
                 {
@@ -367,7 +367,7 @@
                 },
                 {
                     "internalType": "uint256",
-                    "name": "amount",
+                    "name": "details",
                     "type": "uint256"
                 }
             ],
@@ -396,7 +396,7 @@
                 },
                 {
                     "internalType": "uint256",
-                    "name": "amount",
+                    "name": "details",
                     "type": "uint256"
                 }
             ],

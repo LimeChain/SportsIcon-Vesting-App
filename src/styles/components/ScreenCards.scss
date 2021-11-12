@@ -57,12 +57,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 21px 20px;
+    padding: 20.5px 20px;
     background: $black;
     color: $white;
     border-radius: 5px;
     font-family: $space-mono-bold;
-    .amount{
+    .details{
         color: $green;
         font-family: $graphik-bold;
     }
@@ -71,6 +71,7 @@
         flex-flow: row;
         justify-content: space-between;
         align-items: center;
+        padding: 0.5px;
         span{
             margin-right: 5px;
         }
@@ -94,6 +95,7 @@
 @include tablet {
     .claimContainer {
         width: 50%;
+        margin-top:10%;
     }
     .connectWindow {
         width: 50%;
