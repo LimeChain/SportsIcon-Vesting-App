@@ -1,6 +1,6 @@
 @import '../../styles/config/colors.scss';
 
-@mixin theme($theme: $black, $color: $white) {
+@mixin theme($theme: $black, $color: $light-gray) {
     background: $theme;
     color: $color;
     padding: 8px;
@@ -30,10 +30,16 @@
     }
     .contractDetailsWrapper:hover .label {
         background: #26372a;
+        &.main {
+            background: $black;
+        }
     }
     .contractDetailsWrapper:hover .details {
         background: #26372a;
         color: $green;
+        &.main {
+            background:$black;
+        }
     }
     .label {
         @include theme();
@@ -42,10 +48,13 @@
         border-radius: 5px 0 0 5px;
         text-align: start;
         white-space: nowrap;
+        &.main {
+            color: white;
+        }
     }
 
     .details {
-        @include theme($color: $green);
+        @include theme($color: $dark-green);
         flex: 1;
         display: flex;
         align-items: center;
@@ -55,8 +64,9 @@
         font-family: $graphik-bold;
         justify-content: right;
         padding: 0 10px 0 0;
-        &.chosenContract {
+        &.main {
             justify-content: center;
+            color: $green;
             span {
                 padding-right: 20px;
             }
@@ -69,12 +79,16 @@
         }
         &:hover {
             background: #26372a;
+            &.main {
+                background: $black;
+            }
         }
     }
     &.selected {
         background-color: $green;
         .label {
             background-color: $green;
+            color: white;
         }
         .details {
             background-color: $green;

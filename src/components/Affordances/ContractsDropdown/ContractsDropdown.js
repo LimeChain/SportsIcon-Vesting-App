@@ -42,11 +42,11 @@ const ContractsDropdown = () => {
                 <CurrentNetwork />
                 <ul className="dropdown">
                     <div className='contract' onClick={() => onDropdown(!dropdown)}>
-                        <div className='contractDetailsWrapper'>
-                            <span className='label'>
+                        <div className='contractDetailsWrapper main'>
+                            <span className='label main'>
                                 {`${contractPeriods[contract]} $ICONS:`}
                             </span>
-                            <span className='details chosenContract'>
+                            <span className='details main'>
                                 <span>{renderTokenAmount(balanceIcons)}</span>
                                 <p className={dropdown && "active"} ><Arrow color='white' /></p>
                             </span>
