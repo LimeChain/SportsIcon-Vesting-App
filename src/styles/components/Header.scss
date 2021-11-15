@@ -20,6 +20,11 @@
     }
 }
 
+.btnDropdown {
+    position: absolute;
+    left: 68%;
+}
+
 @include tablet {
     .mainHeader {
         flex-flow: row wrap;

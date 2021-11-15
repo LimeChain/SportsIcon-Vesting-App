@@ -22,7 +22,7 @@ const ConnectWallet = () => {
         setConnectionState,
         isMetaMask,
         setMetaMask,
-        setBalanceTokSportsIconTokens,
+        setBalanceIcons,
         setVestedTokens,
         setFreeTokens,
     } = useGlobalContext();
@@ -67,12 +67,12 @@ const ConnectWallet = () => {
     }
 
     const updateGlobalStateQuantities = async (userWallet, userWalletAddress) => {
-        const sdk = await new RouterSDK(userWallet, window.CONFIG.contract, routerContract.abi, ERC20.abi);
+        const sdk = await new RouterSDK(userWallet, window.CONFIG.contracts[0], routerContract.abi, ERC20.abi);
         const balance = await sdk.balanceOfSportsIconTokens(window.CONFIG.token, userWalletAddress);
         const totalAmountVestedTokens = await sdk.getUserTotalVestedAmount(userWalletAddress);
         const freeTokens = await sdk.getUserFreeTokens(userWalletAddress);
         await setSDK(sdk);
-        await setBalanceTokSportsIconTokens(balance);
+        await setBalanceIcons(balance);
         await setVestedTokens(totalAmountVestedTokens);
         await setFreeTokens(freeTokens);
     }
