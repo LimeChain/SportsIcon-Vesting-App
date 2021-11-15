@@ -19,7 +19,7 @@ const showNotification = (text, type, linkToExplorer) => {
                     this.barDom.innerHTML += this.options.alert + '<p class="noty-reply">Success</p>';
                     this.barDom.innerHTML += `<p>${this.options.text}<a href=${linkToExplorer} target="_blank"> Explore transaction here. </a></p>`;
                     this.barDom.innerHTML += '</div>';
-                } 
+                }
             }
         }
     })
@@ -29,7 +29,7 @@ const showNotification = (text, type, linkToExplorer) => {
         type: type === 'sports-icon-success' ? 'sports-icon-success' : 'sports-icon-alert',
         linkToExplorer,
         progressBar: true,
-      //  timeout: 5000,
+        timeout: 7000,
         maxVisible: 1,
         layout: 'bottom',
     }).show();
