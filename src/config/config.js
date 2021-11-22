@@ -9,8 +9,8 @@ const config = {
             "rpc_url": `https://rinkeby.infura.io/v3/${process.env.REACT_APP_INFURA_ID}`,
             "explorer_url": "https://rinkeby.etherscan.io/tx/"
         },
-        "contracts": ["0x4b928BE2771A30bE8FAed062195150e1837E1CcD", "0xB3f1000dC34C0B59a148f040fe536d9DABDe6c8C", "0x19E6378cb7B023FC25d8e27C4b036c3E48581Bfb"],
-        "token": "0xF6A74f24123171Ddf469B063f8230E351Ef7d50F"
+        "contracts": ["0x6Dd5a10C0A39838f8fDA2D40156aba01f17F7F95", "0x5C34c083C251AeD727d49b5Ab7ae32eE65e0Aad8", "0xBc17D3E15c6fDBA9BfE9689F370a284F1ecf5278"],
+        "token": "0xBf2036D15372ebbDB3f3884Edd097E21DD87bB62"
     },
     "mainnet": {
         "network": {

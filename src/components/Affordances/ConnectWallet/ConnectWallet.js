@@ -69,11 +69,19 @@ const ConnectWallet = () => {
     const updateGlobalStateQuantities = async (userWallet, userWalletAddress) => {
         const sdk = await new RouterSDK(userWallet, window.CONFIG.contracts[0], routerContract.abi, ERC20.abi);
         const balance = await sdk.balanceOfSportsIconTokens(window.CONFIG.token, userWalletAddress);
+        const totalAmountVestedTokensPriv = await sdk.getUserTotalVestedAmountPrivileged(userWalletAddress);
         const totalAmountVestedTokens = await sdk.getUserTotalVestedAmount(userWalletAddress);
+
+        if (Number(totalAmountVestedTokensPriv)) {
+            await setVestedTokens(totalAmountVestedTokensPriv);
+        } else {
+            await setVestedTokens(totalAmountVestedTokens);
+        }
+
         const freeTokens = await sdk.getUserFreeTokens(userWalletAddress);
         await setSDK(sdk);
         await setBalanceIcons(balance);
-        await setVestedTokens(totalAmountVestedTokens);
+
         await setFreeTokens(freeTokens);
     }
 

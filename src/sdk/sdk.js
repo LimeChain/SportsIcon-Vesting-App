@@ -18,6 +18,11 @@ class RouterSDK {
         return ethers.utils.formatUnits(vestedTokens);
     }
 
+    async getUserTotalVestedAmountPrivileged(userAddress) {
+        const vestedTokensPrivileged = await this.routerContract.vestedTokensOfPrivileged(userAddress);
+        return ethers.utils.formatUnits(vestedTokensPrivileged);
+    }
+
     async getUserFreeTokens(userAddress) {
         const freeTokensOf = await this.routerContract.freeTokens(userAddress);
         return ethers.utils.formatUnits(freeTokensOf);
