@@ -14,7 +14,7 @@ const ContractsDropdown = () => {
     const renderedRef = useRef(false);
     const dropdownRef = useRef();
     
-    const contractPeriods = ["PRE-SALE", "SALE", "SALE+"];
+    const contractPeriods = ["PRE-SEED", "SEED", "SEED+"];
 
     useEffect(() => {
 
@@ -81,7 +81,7 @@ const ContractsDropdown = () => {
                                 }}>
                                     <div className='contractDetailsWrapper'>
                                         <span className='label'>
-                                            {period} CONTRACT
+                                            {period} PERIOD
                                         </span>
                                         <span className='details'>
                                             {formatAddress(window.CONFIG.contracts[i])}
