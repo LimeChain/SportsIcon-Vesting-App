@@ -29,7 +29,7 @@ const showNotification = (text, type, linkToExplorer) => {
         type: type === 'sports-icon-success' ? 'sports-icon-success' : 'sports-icon-alert',
         linkToExplorer,
         progressBar: true,
-        timeout: 5000,
+        timeout: 7000,
         maxVisible: 1,
         layout: 'bottom',
     }).show();

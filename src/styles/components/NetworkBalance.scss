@@ -1,41 +1,105 @@
 @import '../../styles/config/colors.scss';
 
-@mixin theme($theme: $black, $color: $white) {
+@mixin theme($theme: $black, $color: $light-gray) {
     background: $theme;
     color: $color;
-    padding: 21px;
+    padding: 8px;
 }
-.tokenBalanceWrapper{
+
+.dropdownContent {
+    background: $black;
+    border-radius: 5px;
+}
+
+.contract{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     flex: 1;
     margin: 1%;
-    .innerContainerTokenBalanceWrapper{
+    position: relative;
+    .contractDetailsWrapper{
         display: flex;
         flex-flow: row wrap;
+        border-radius: 5px;
+        background: $black;
         width: 350px;
+        cursor: pointer;
+        padding: 5px;
+    }
+    .contractDetailsWrapper:hover .label {
+        background: #26372a;
+        &.main {
+            background: $black;
+        }
+    }
+    .contractDetailsWrapper:hover .details {
+        background: #26372a;
+        color: $green;
+        &.main {
+            background:$black;
+        }
     }
     .label {
         @include theme();
+        flex-basis: 45%;
         font-family: $space-mono-bold;
-        flex: 3;
         border-radius: 5px 0 0 5px;
+        text-align: start;
+        white-space: nowrap;
+        &.main {
+            color: white;
+        }
     }
-    .amount {
-        @include theme($color: $green);
+
+    .details {
+        @include theme($color: $dark-green);
         flex: 1;
         display: flex;
         align-items: center;
         justify-content: center;
+        position: relative;
         border-radius: 0 5px 5px 0;
         font-family: $graphik-bold;
+        justify-content: right;
+        padding: 0 10px 0 0;
+        &.main {
+            justify-content: center;
+            color: $green;
+            span {
+                padding-right: 20px;
+            }
+            p {
+                margin: 0;
+            }
+            .active {
+                transform: rotate(180deg); 
+            }
+        }
+        &:hover {
+            background: #26372a;
+            &.main {
+                background: $black;
+            }
+        }
+    }
+    &.selected {
+        background-color: $green;
+        .label {
+            background-color: $green;
+            color: white;
+        }
+        .details {
+            background-color: $green;
+            color: white;
+        }
     }
 }
   
 @include tablet {
-    .tokenBalanceWrapper{
-        .innerContainerTokenBalanceWrapper{
+    .contract{
+        .contractDetailsWrapper{
             width: 275px;
         }
     }   
@@ -47,16 +111,14 @@
     }
 }
 @include mobile {
-    .tokenBalanceWrapper{
-    .innerContainerTokenBalanceWrapper{
-        width: 275px;
-            .label{
-                padding: 14px;
-            }
-            .amount{
-                padding: 14px;
-            }
-    }
+    .contract{
+        .contractDetailsWrapper{
+            width: 275px;
+            padding: 5px;
+        }
+        .label {
+            padding: 4px;
+        }
     }
     .selectedNetwork{
         flex-flow: row;
@@ -65,14 +127,8 @@
     }
 }
 @include mobile-semi {
-   .innerContainerTokenBalanceWrapper{
+   .contractDetailsWrapper{
         width: 275px;
-            .label{
-                padding: 12px 0px;
-            }
-            .amount{
-                 padding: 12px 40px;
-            }
    }
    .selectedNetwork{
     flex-flow: row;
