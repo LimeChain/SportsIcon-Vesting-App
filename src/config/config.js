@@ -22,8 +22,8 @@ const config = {
             "rpc_url": `https://mainnet.infura.io/v3/${process.env.REACT_APP_INFURA_ID}`,
             "explorer_url": "https://mainnet.etherscan.io/tx/"
         },
-        "contract": "",
-        "token": ""
+        "contracts": ["0x3246Ddc1ee20985547493a7FD77533Eb17493D73", "0x1B1Fd2ee70f2b63361FdAAD664E327a3c95B6Acc", "0x467D30A4F95B23F6d69b62f24772d900212252d8"],
+        "token": "0x3F68e7B44e9bCB486C2FeAdB7A2289D9cdFC9088"
     }
 }
 
